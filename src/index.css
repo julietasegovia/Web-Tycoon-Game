@@ -1,3 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.press-start-2p-regular {
+  font-family: "Press Start 2P", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+
+  body {
+
+    background-color: #04070d;
+    color: #e2e8f0;
+    font-family: "Press Start 2P", system-ui;
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      linear-gradient(rgba(245,158,11,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(245,158,11,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px #ffbf6b inset !important;
+    -webkit-text-fill-color: #471d13 !important;
+    caret-color: #e2e8f0;
+  }
+}
+
+@layer components {
+  /* ── Input field ── */
+  .field {
+    width: 100%;
+    background-color: #fff6e7;
+    border: 1px solid #331f12;
+    border-radius: 0.375rem;
+    padding: 0.75rem 1rem;
+    color: #310800;
+    font-size: 0.7rem;
+    font-family: "Press Start 2P", system-ui;
+    letter-spacing: 0.025em;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+  }
+  .field::placeholder { color: #582b1e; }
+  .field:focus {
+    border-color: #f59e0b;
+    box-shadow: 0 0 0 3px rgba(245,158,11,0.15);
+  }
+  .field.field-error {
+    border-color: rgba(239,68,68,0.6);
+  }
+  .field.field-error:focus {
+    border-color: #f87171;
+    box-shadow: 0 0 0 3px rgba(239,68,68,0.15);
+  }
+
+  /* ── Primary gold button ── */
+  .btn-gold {
+    width: 100%;
+    background-color: #fdcb74cb;
+    color: #38200d;
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 600;
+    padding: 1.2rem;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.2s, transform 0.1s;
+  }
+  .btn-gold:hover {
+    background-color: #ff9539ec;
+    box-shadow: 0 4px 24px rgba(245,158,11,0.2);
+  }
+  .btn-gold:active  { transform: scale(0.98); }
+  .btn-gold:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  /* ── Ghost link button ── */
+  .btn-link {
+    color: #f59e0b;
+    font-size: 0.875rem;
+    font-weight: 500;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.15s;
+    text-underline-offset: 3px;
+  }
+  .btn-link:hover {
+    color: #fde68a;
+    text-decoration: underline;
+  }
+
+  /* ── Field label ── */
+  .field-label {
+    display: block;
+    font-size: 10px;
+    font-weight: 600;
+    color: #422006cb;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 0.375rem;
+  }
+}
