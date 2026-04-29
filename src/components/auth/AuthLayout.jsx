@@ -6,28 +6,10 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 // Animated background hex grid (pure CSS/SVG, no deps)
-function HexGrid() {
-  return (
-    <svg
-      className="absolute inset-0 w-full h-full opacity-[0.07] pointer-events-none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <defs>
-        <pattern id="hex" x="0" y="0" width="56" height="48" patternUnits="userSpaceOnUse">
-          <polygon
-            points="28,2 54,14 54,34 28,46 2,34 2,14"
-            fill="none"
-            stroke="#f59e0b"
-            strokeWidth="0.8"
-          />
-        </pattern>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#hex)" />
-    </svg>
-  );
-}
 
-// Rotating golden ring decoration
+import background from '../../assets/bg2.gif';
+
+
 function GoldenRing({ size, className }) {
   return (
     <div
@@ -41,28 +23,29 @@ export default function AuthLayout({ children }) {
   return (
     <div className="min-h-screen flex">
 
-      {/* ── LEFT: Branding panel ─────────────────────────────────────────── */}
-      <div className="hidden lg:flex lg:w-[52%] flex-col justify-between
-                      bg-ink-900 border-r border-ink-700 p-16 relative overflow-hidden">
-
-        <HexGrid />
+      {/* ── LEFT: Branding panel with background image ───────────────────── */}
+      <div 
+        className="hidden lg:flex lg:w-[52%] flex-col justify-between
+                   border-r border-ink-700 p-16 relative overflow-hidden"
+        style={{
+          backgroundImage: `url(${background})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        {/* Dark overlay for better text contrast */}
+        <div className="absolute inset-0 bg-black/60" />
 
         {/* Glowing radial blob */}
         <div className="absolute -bottom-32 -left-32 w-[500px] h-[500px] rounded-full
                         bg-gold-400/5 blur-3xl pointer-events-none" />
 
-        {/* Decorative rings */}
-        <div className="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 pointer-events-none">
-          <GoldenRing size={480} className="" />
-          <GoldenRing size={340} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 [animation-direction:reverse] [animation-duration:12s]" />
-          <GoldenRing size={200} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 [animation-duration:7s]" />
-        </div>
-
         {/* Logo */}
         <div className="relative z-10">
           <div className="flex items-center gap-2">
-            <span className="text-gold-400 text-2xl leading-none">◈</span>
-            <span className="font-display text-3xl text-slate-100 tracking-widest">
+            <span className="text-gold-400 text-2xl leading-none">𖧧</span>
+            <span className=" text-3xl text-slate-100 tracking-widest">
               FARM TYCOON
             </span>
           </div>
@@ -70,7 +53,7 @@ export default function AuthLayout({ children }) {
 
         {/* Hero copy */}
         <div className="relative z-10 space-y-7">
-          <h1 className="font-display text-[5.5rem] leading-[0.9] text-slate-100 tracking-wide">
+          <h1 className=" text-[5.1rem] leading-[0.9] text-slate-100 tracking-wide">
             BUILD<br />
             <span className="text-gold-400 animate-flicker">YOUR</span><br />
             OWN BARN
@@ -83,12 +66,12 @@ export default function AuthLayout({ children }) {
           {/* Stat pills */}
           <div className="flex gap-6 pt-1">
             {[
-              { v: "12K+", l: "Players" },
-              { v: "$4.2B", l: "Virtual revenue" },
-              { v: "99.9%", l: "Uptime" },
+              { v: "0", l: "Players" },
+              { v: "0", l: "Virtual revenue" },
+              { v: "0", l: "Uptime" },
             ].map(({ v, l }) => (
               <div key={l} className="border-l-2 border-gold-500/40 pl-3">
-                <div className="font-display text-xl text-gold-400 tracking-wider">{v}</div>
+                <div className=" text-xl text-gold-400 tracking-wider">{v}</div>
                 <div className="text-[11px] text-slate-600 uppercase tracking-widest mt-0.5">{l}</div>
               </div>
             ))}
@@ -96,17 +79,20 @@ export default function AuthLayout({ children }) {
         </div>
 
         {/* Bottom tagline */}
-        <p className="relative z-10 text-[11px] text-ink-600 tracking-widest uppercase">
-          Grow your dreams.
-        </p>
+        <div className="flex">
+          <p className="pt-4 pr-2 relative z-10 text-[11px] text-ink-600 tracking-widest uppercase">
+            Grow your dreams.
+          </p> 
+          <p className='text-[20px] ls'>𓀚 𓃔𓃽</p>
+        </div>
       </div>
 
       {/* ── RIGHT: Form panel ────────────────────────────────────────────── */}
       <div className="flex-1 flex items-center justify-center p-6 sm:p-12 relative bg-amber-100">
         {/* Mobile logo */}
         <div className="absolute top-6 left-6 lg:hidden flex items-center gap-1.5">
-          <span className="text-gold-400">◈</span>
-          <span className="font-display text-xl text-slate-100 tracking-widest">FARM TYCOON</span>
+          <span className="text-gold-400">𖧧</span>
+          <span className=" text-xl text-slate-100 tracking-widest">FARM TYCOON</span>
         </div>
 
         <div className="w-full max-w-[400px] animate-slide-up">

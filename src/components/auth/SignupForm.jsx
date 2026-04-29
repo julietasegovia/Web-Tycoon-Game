@@ -48,7 +48,7 @@ export default function SignupForm({ onSuccess, onSwitch }) {
         <p className="text-[11px] text-yellow-900 tracking-[0.2em] uppercase mb-2">
           Join the game
         </p>
-        <h2 className="font-display text-yellow-950 text-5xl text-slate-100 tracking-wide leading-none">
+        <h2 className=" text-yellow-950 text-5xl text-slate-100 tracking-wide leading-none">
           SIGN UP
         </h2>
       </div>

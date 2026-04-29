@@ -28,9 +28,9 @@ export default function LoginForm({ onSuccess, onSwitch }) {
       {/* Header */}
       <div>
         <p className="text-[11px] text-yellow-900 tracking-[0.2em] uppercase mb-2">
-          Welcome back
+          Welcome back!
         </p>
-        <h2 className="text-yellow-950 font-display text-5xl text-slate-100 tracking-wide leading-none">
+        <h2 className="text-yellow-950  text-5xl text-slate-100 tracking-wide leading-none">
           LOG IN
         </h2>
       </div>
@@ -71,7 +71,7 @@ export default function LoginForm({ onSuccess, onSwitch }) {
 
         <div className="pt-2">
           <button type="submit" className="btn-gold" disabled={loading}>
-            {loading ? "Logging in…" : "Enter the Empire"}
+            {loading ? "Logging in…" : "⚘⋆˚࿔ Login ࿔˚⋆⚘"}
           </button>
         </div>
       </form>
