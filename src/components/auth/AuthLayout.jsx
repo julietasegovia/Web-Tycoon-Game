@@ -90,7 +90,7 @@ export default function AuthLayout({ children }) {
       {/* ── RIGHT: Form panel ────────────────────────────────────────────── */}
       <div className="flex-1 flex items-center justify-center p-6 sm:p-12 relative bg-amber-100">
         {/* Mobile logo */}
-        <div className="absolute top-6 left-6 lg:hidden flex items-center gap-1.5">
+        <div className="absolute top-4 left-6 lg:hidden flex items-center gap-1.5">
           <span className="text-gold-400">𖧧</span>
           <span className=" text-xl text-slate-100 tracking-widest">FARM TYCOON</span>
         </div>

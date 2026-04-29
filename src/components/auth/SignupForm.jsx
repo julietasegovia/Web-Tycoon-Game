@@ -42,7 +42,7 @@ export default function SignupForm({ onSuccess, onSwitch }) {
   }
 
   return (
-    <div className="space-y-7">
+    <div className="space-y-8">
       {/* Header */}
       <div>
         <p className="text-[11px] text-yellow-900 tracking-[0.2em] uppercase mb-2">
