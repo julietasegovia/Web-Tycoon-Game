@@ -27,7 +27,7 @@ export default function SignupForm({ onSuccess, onSwitch }) {
   function onChange(e) {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
-    // Clear the individual field error as the user types
+
     if (fieldErrors[name]) setFieldErrors((prev) => ({ ...prev, [name]: null }));
   }
 
@@ -42,7 +42,7 @@ export default function SignupForm({ onSuccess, onSwitch }) {
   }
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       {/* Header */}
       <div>
         <p className="text-[11px] text-yellow-900 tracking-[0.2em] uppercase mb-2">
@@ -54,7 +54,7 @@ export default function SignupForm({ onSuccess, onSwitch }) {
       </div>
 
       {/* Form */}
-      <form onSubmit={onSubmit} className="space-y-4">
+      <form onSubmit={onSubmit} className="space-y-3">
         <ErrorBanner message={error} />
 
         <FormField
@@ -109,7 +109,7 @@ export default function SignupForm({ onSuccess, onSwitch }) {
           By signing up you agree to our{" "}
           <button type="button" className="btn-link text-[11px]">Terms of Service</button>
           {" & "}
-          <button type="button" className="btn-link text-[11px]">Privacy Policy :)</button>.
+          <button type="button" className="btn-link text-[11px]">Privacy Policy :)</button>
         </p>
 
         <button type="submit" className="btn-gold" disabled={loading}>
@@ -118,7 +118,7 @@ export default function SignupForm({ onSuccess, onSwitch }) {
       </form>
 
       {/* Divider */}
-      <div className="flex items-center gap-3">
+      <div className="flex items-center">
         <div className="flex-1 h-px bg-ink-700" />
         <span className="text-[11px] text-ink-600 tracking-widest uppercase text-yellow-900">or</span>
         <div className="flex-1 h-px bg-ink-700" />

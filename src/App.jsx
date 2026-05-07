@@ -3,11 +3,9 @@ import { AuthProvider, AuthContext } from "./context/AuthContext";
 import AuthPage      from "./pages/AuthPage";
 import DashboardPage from "./pages/DashboardPage";
 
-// ── Inner shell (has access to AuthContext) ───────────────────────────────────
 function AppShell() {
   const { isLoggedIn, loading, saveSession } = useContext(AuthContext);
 
-  // While restoring a saved session from localStorage, show nothing (avoids flash)
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -23,7 +21,6 @@ function AppShell() {
     : <AuthPage onAuthSuccess={() => {}} />;
 }
 
-// ── Root — wraps everything in the auth provider ──────────────────────────────
 export default function App() {
   return (
     <AuthProvider>
