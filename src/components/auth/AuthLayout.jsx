@@ -7,7 +7,7 @@
 
 // Animated background hex grid (pure CSS/SVG, no deps)
 
-import background from '../../assets/bg2.gif';
+import background from '../../assets/bg-farm.gif';
 
 
 function GoldenRing({ size, className }) {
@@ -26,7 +26,7 @@ export default function AuthLayout({ children }) {
       {/* ── LEFT: Branding panel with background image ───────────────────── */}
       <div 
         className="hidden lg:flex lg:w-[52%] flex-col justify-between
-                   border-r border-ink-700 p-16 relative overflow-hidden"
+                border-r border-ink-700 p-16 relative overflow-hidden"
         style={{
           backgroundImage: `url(${background})`,
           backgroundSize: 'cover',
@@ -35,7 +35,7 @@ export default function AuthLayout({ children }) {
         }}
       >
         {/* Dark overlay for better text contrast */}
-        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0 bg-black/40" />
 
         {/* Glowing radial blob */}
         <div className="absolute -bottom-32 -left-32 w-[500px] h-[500px] rounded-full
@@ -44,7 +44,7 @@ export default function AuthLayout({ children }) {
         {/* Logo */}
         <div className="relative z-10">
           <div className="flex items-center gap-2">
-            <span className="text-gold-400 text-2xl leading-none">𖧧</span>
+            <span className="text-gold-400 text-2xl leading-none h-10 font-bold">𖧧</span>
             <span className=" text-3xl text-slate-100 tracking-widest">
               FARM TYCOON
             </span>
@@ -53,37 +53,23 @@ export default function AuthLayout({ children }) {
 
         {/* Hero copy */}
         <div className="relative z-10 space-y-7">
-          <h1 className=" text-[5.1rem] leading-[0.9] text-slate-100 tracking-wide">
+          <h1 className=" text-[5.1rem] leading-[0.9] text-zinc-100 tracking-wide">
             BUILD<br />
-            <span className="text-gold-400 animate-flicker">YOUR</span><br />
+            <span className="text-amber-400 animate-flicker">YOUR</span><br />
             OWN BARN
           </h1>
 
-          <p className="text-slate-400 text-base leading-relaxed max-w-xs font-light">
+          <p className="text-amber-200 text-base leading-relaxed max-w-xs font-light">
             Start with a simple farm house. Scale into an full barn with chickens, cows, fishing and more!
           </p>
-
-          {/* Stat pills */}
-          <div className="flex gap-6 pt-1">
-            {[
-              { v: "0", l: "Players" },
-              { v: "0", l: "Virtual revenue" },
-              { v: "0", l: "Uptime" },
-            ].map(({ v, l }) => (
-              <div key={l} className="border-l-2 border-gold-500/40 pl-3">
-                <div className=" text-xl text-gold-400 tracking-wider">{v}</div>
-                <div className="text-[11px] text-slate-600 uppercase tracking-widest mt-0.5">{l}</div>
-              </div>
-            ))}
-          </div>
         </div>
 
         {/* Bottom tagline */}
         <div className="flex">
           <p className="pt-4 pr-2 relative z-10 text-[11px] text-ink-600 tracking-widest uppercase">
-            Grow your dreams.
+            Grow your dreams!
           </p> 
-          <p className='text-[20px] ls'>𓀚 𓃔𓃽</p>
+          <p className='text-[20px] ls font-bold mt-1'>𓀚 𓃔𓃽</p>
         </div>
       </div>
 

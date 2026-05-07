@@ -1,30 +1,25 @@
 // ─────────────────────────────────────────────────────────────────────────────
-//  pages/AuthPage.jsx
+//  AuthPage.jsx
 //
-//  Renders either LoginForm or SignupForm inside AuthLayout.
-//  Uses local state to switch views — no router required.
+//  Reads auth state from AuthContext.
+//  - While the token is being verified on mount → blank screen (avoids flash)
+//  - Once verified: if logged in → Farm, otherwise → auth forms
 // ─────────────────────────────────────────────────────────────────────────────
-
+// pages/AuthPage.jsx (Simplificado)
 import { useState } from "react";
 import AuthLayout from "../components/auth/AuthLayout";
 import LoginForm  from "../components/auth/LoginForm";
 import SignupForm from "../components/auth/SignupForm";
 
-export default function AuthPage({ onAuthSuccess }) {
-  const [view, setView] = useState("login"); // "login" | "signup"
+export default function AuthPage() {
+  const [view, setView] = useState("login");
 
   return (
     <AuthLayout>
       {view === "login" ? (
-        <LoginForm
-          onSuccess={onAuthSuccess}
-          onSwitch={() => setView("signup")}
-        />
+        <LoginForm onSwitch={() => setView("signup")} />
       ) : (
-        <SignupForm
-          onSuccess={onAuthSuccess}
-          onSwitch={() => setView("login")}
-        />
+        <SignupForm onSwitch={() => setView("login")} />
       )}
     </AuthLayout>
   );

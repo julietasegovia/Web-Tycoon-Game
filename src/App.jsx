@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { AuthProvider, AuthContext } from "./context/AuthContext";
-import AuthPage      from "./pages/AuthPage";
-import DashboardPage from "./pages/DashboardPage";
+import AuthPage from "./pages/AuthPage";
+import Farm from "./components/Farm";
 
 function AppShell() {
-  const { isLoggedIn, loading, saveSession } = useContext(AuthContext);
+  const { isLoggedIn, loading } = useContext(AuthContext);
 
   if (loading) {
     return (
@@ -17,8 +17,8 @@ function AppShell() {
   }
 
   return isLoggedIn
-    ? <DashboardPage />
-    : <AuthPage onAuthSuccess={() => {}} />;
+    ? <Farm />
+    : <AuthPage />;
 }
 
 export default function App() {

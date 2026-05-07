@@ -54,7 +54,7 @@ export default function SignupForm({ onSuccess, onSwitch }) {
       </div>
 
       {/* Form */}
-      <form onSubmit={onSubmit} className="space-y-3">
+      <form onSubmit={onSubmit} className="space-y-3 pb-5">
         <ErrorBanner message={error} />
 
         <FormField
@@ -105,12 +105,12 @@ export default function SignupForm({ onSuccess, onSwitch }) {
           required
         />
 
-        <p className="text-[11px] text-slate-600 leading-relaxed pt-0.5 text-yellow-900">
+        {/*<p className="text-[11px] text-slate-600 leading-relaxed pt-0.5 text-yellow-900">
           By signing up you agree to our{" "}
           <button type="button" className="btn-link text-[11px]">Terms of Service</button>
           {" & "}
           <button type="button" className="btn-link text-[11px]">Privacy Policy :)</button>
-        </p>
+        </p>*/}
 
         <button type="submit" className="btn-gold" disabled={loading}>
           {loading ? "Creating account…" : "Build Your Farm!"}
