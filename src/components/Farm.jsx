@@ -34,19 +34,18 @@ export default function Farm() {
       position: "relative",
       width: "100vw",
       height: "100vh",
-      backgroundColor: "#508749", // Color césped
+      backgroundColor: "#2a7741", // Color césped
       overflow: "hidden"
     }}>
 
-      {/* 🏠 LA CASA: Supongamos que está en la esquina superior izquierda (0,0) 
-          y mide 160x144 píxeles */}
-      <At x={750} y={40} z={2}>
+      {/* 🏠 LA CASA: 240 x 400*/}
+      <At x={650} y={40} z={2}>
           <F sx={240} sy={400} sw={64} sh={80} scale={3} />
       </At>
 
       {/* ══ LA CASITA DE MADERA (Edificio Pequeño) ══ */}
         {/* Mide 48x48, está en sx=208, sy=16 */}
-        <At x={570} y={80} z={2}>
+        <At x={470} y={80} z={2}>
           <F sx={210} sy={16} sw={56} sh={48} scale={3} />
         </At>
 
@@ -85,36 +84,73 @@ export default function Farm() {
 
       {/* huevos*/}
       <At x={100} y={350} z={3}>
-        <F sx={0} sy={144} sw={96} sh={18} scale={3} />
+        <F sx={0} sy={144} sw={80} sh={18} scale={3} />
       </At>
       
       {/*gallinas bebe*/}
       <At x={100} y={400} z={3}>
-        <F sx={0} sy={160} sw={96} sh={18} scale={3} />
+        <F sx={0} sy={160} sw={80} sh={18} scale={3} />
       </At>
 
       {/*gallinas bebe*/}
-      <At x={100} y={450} z={3}>
-        <F sx={0} sy={175} sw={96} sh={18} scale={3} />
+      <At x={100} y={440} z={3}>
+        <F sx={0} sy={175} sw={80} sh={18} scale={3} />
       </At>
 
       {/*gallinas */}
       <At x={100} y={500} z={3}>
-        <F sx={0} sy={190} sw={96} sh={18} scale={3} />
+        <F sx={0} sy={190} sw={80} sh={18} scale={3} />
       </At>
       
       {/*gallinas saltando*/}
       <At x={100} y={555} z={3}>
-        <F sx={0} sy={208} sw={96} sh={18} scale={3} />
+        <F sx={0} sy={208} sw={80} sh={18} scale={3} />
       </At>
 
       {/*gallinas sentadas*/}
       <At x={100} y={605} z={3}>
-        <F sx={0} sy={225} sw={96} sh={18} scale={3} />
+        <F sx={0} sy={225} sw={80} sh={18} scale={3} />
+      </At>
+
+      {/*pasto */}
+      <At x={350} y={370} z={3}>
+          <F sx={16} sy={336} sw={20} sh={22} scale={2.7} />
+      </At>
+      <At x={390} y={400} z={3}>
+          <F sx={16} sy={336} sw={20} sh={22} scale={2.7} />
+      </At>
+      <At x={550} y={270} z={3}>
+          <F sx={16} sy={336} sw={20} sh={22} scale={2.7} />
+      </At>
+      <At x={10} y={60} z={3}>
+          <F sx={16} sy={336} sw={20} sh={22} scale={2.7} />
+      </At>
+      <At x={1050} y={370} z={3}>
+          <F sx={16} sy={336} sw={20} sh={22} scale={2.7} />
+      </At>
+      <At x={1250} y={570} z={3}>
+          <F sx={16} sy={336} sw={20} sh={22} scale={2.7} />
+      </At>
+      <At x={1290} y={540} z={3}>
+          <F sx={16} sy={336} sw={20} sh={22} scale={2.7} />
+      </At>
+      <At x={800} y={530} z={3}>
+          <F sx={16} sy={336} sw={20} sh={22} scale={2.7} />
+      </At>
+      <At x={750} y={430} z={3}>
+          <F sx={16} sy={336} sw={20} sh={22} scale={2.7} />
+      </At>
+
+    {/*mesas */}
+      <At x={890} y={470} z={3}>
+        <F sx={445} sy={272} sw={70} sh={24} scale={2.7} />
+      </At>
+      <At x={690} y={550} z={3}>
+        <F sx={445} sy={300} sw={70} sh={24} scale={2.7} />
       </At>
 
         {/* Troncos Cortados (sx=208, sy=112, 32x32) */}
-        <At x={935} y={160} z={2}>
+        <At x={840} y={160} z={2}>
           <F sx={208} sy={112} sw={32} sh={48} scale={2.5} />
         </At>
 
