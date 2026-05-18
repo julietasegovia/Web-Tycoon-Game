@@ -175,7 +175,7 @@ export default function Farm() {
             padding: "8px 12px", background: "rgba(0,0,0,0.5)", 
             color: "#fff", fontFamily: "monospace", borderRadius: 4
           }}>
-            🌾 Oro: 1500 | 🌱 Semillas: 10
+            Coins : 1500
           </div>
         </At>
     </div>
