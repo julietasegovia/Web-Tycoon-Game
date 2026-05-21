@@ -1,5 +1,5 @@
-// Farm.jsx — static pixel scene matching the reference image
-// Place farm.png and crops.png in your /public folder
+import GrillaParcelas from "./GrillaParcelas";
+import HUD from "./HUD"
 
 //LA GRANJA MIDE 1420PX
 const FARM = "src/assets/farm.png";
@@ -39,7 +39,7 @@ export default function Farm() {
     }}>
 
       {/* 🏠 LA CASA: 240 x 400*/}
-      <At x={650} y={40} z={2}>
+      <At x={650} y={10} z={2}>
           <F sx={240} sy={400} sw={64} sh={80} scale={3} />
       </At>
 
@@ -78,7 +78,7 @@ export default function Farm() {
         </At>
 
       {/* Granjero Brown (sx=272, sy=0, 16x24) */}
-        <At x={700} y={200} z={3}>
+        <At x={700} y={160} z={3}>
           <F sx={272} sy={0} sw={30} sh={35} scale={3} />
         </At>
 
@@ -142,15 +142,15 @@ export default function Farm() {
       </At>
 
     {/*mesas */}
-      <At x={890} y={470} z={3}>
+      <At x={1100} y={470} z={3}>
         <F sx={445} sy={272} sw={70} sh={24} scale={2.7} />
       </At>
-      <At x={690} y={550} z={3}>
+      <At x={1000} y={550} z={3}>
         <F sx={445} sy={300} sw={70} sh={24} scale={2.7} />
       </At>
 
         {/* Troncos Cortados (sx=208, sy=112, 32x32) */}
-        <At x={840} y={160} z={2}>
+        <At x={840} y={130} z={2}>
           <F sx={208} sy={112} sw={32} sh={48} scale={2.5} />
         </At>
 
@@ -169,15 +169,16 @@ export default function Farm() {
           <F sx={85} sy={390} sw={22} sh={20} scale={2} />
         </At>
 
-        {/* ══ INTERFAZ FLOTANTE (HUD) ══ */}
-        <At x={20} y={20} z={10}>
-          <div style={{
-            padding: "8px 12px", background: "rgba(0,0,0,0.5)", 
-            color: "#fff", fontFamily: "monospace", borderRadius: 4
-          }}>
-            Coins : 1500
-          </div>
+        {/*Grilla de parcelas */}
+        <At x={550} y={290} z={5}>
+          <GrillaParcelas/>
         </At>
+
+        {/*HUD */}
+        <HUD />
+
+        {/*Shop */}
+        
     </div>
   );
 }
