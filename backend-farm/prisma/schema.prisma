@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+// prisma/schema.prisma
+
+>>>>>>> juli
 generator client {
   provider = "prisma-client-js"
 }
@@ -7,10 +12,25 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+<<<<<<< HEAD
+=======
+// ── User ─────────────────────────────────────────────────────────────────────
+// Matches the fields used in server.js: username, email, password (bcrypt hash)
+
+>>>>>>> juli
 model User {
   id        Int      @id @default(autoincrement())
   username  String   @unique
   email     String   @unique
+<<<<<<< HEAD
   password  String
   createdAt DateTime @default(now())
 }
+=======
+  password  String   // bcrypt hash — never store plaintext
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+>>>>>>> juli

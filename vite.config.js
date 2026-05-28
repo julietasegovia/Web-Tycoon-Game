@@ -2,7 +2,10 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
+<<<<<<< HEAD
   base: '/~cinco/',
+=======
+>>>>>>> juli
   plugins: [react()],
   server: {
     port: 3000,           // Puerto fijo

@@ -32,8 +32,17 @@ async function request(endpoint, { method = "GET", body, token } = {}) {
     body: body ? JSON.stringify(body) : undefined,
   });
 
-  const data = await res.json();
-  if (!res.ok) throw new Error(data.message ?? "Something went wrong");
+  // Safely parse JSON — fall back to null if body is empty or not JSON
+  let data = null;
+  const text = await res.text();
+  try {
+    data = text ? JSON.parse(text) : null;
+  } catch {
+    // Server sent back HTML (e.g. a 404 page) or nothing at all
+    if (!res.ok) throw new Error(`Server error ${res.status}: unexpected response format`);
+  }
+
+  if (!res.ok) throw new Error(data?.message ?? "Something went wrong");
   return data;
 }
 
