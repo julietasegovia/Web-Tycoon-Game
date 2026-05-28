@@ -68,22 +68,19 @@ export default function Farm() {
       <At x="61.35vw" y="51.50vh" z={2}>
         <F sx={0} sy={0} sw={4} sh={50} scale={4.5} />
       </At>
-      <At x="61.35vw" y="56.90vh" z={2}>
-        <F sx={0} sy={0} sw={4} sh={50} scale={4.5} />
-      </At>
 
 
       {/* ══ CERCA DE MADERA puerta */}
-      <At x="51.7vw" y="73.3vh" z={2}>
-        <F sx={14} sy={0} sw={41.1} sh={17} scale={4.5} />
+      <At x="51.7vw" y="69vh" z={2}>
+        <F sx={14} sy={0} sw={44.7} sh={17} scale={4.5} />
       </At>
-      <At x="47.1vw" y="73.3vh" z={2}>
+      <At x="47.1vw" y="69vh" z={2}>
         <F sx={14} sy={0} sw={20} sh={17} scale={4.5} />
       </At>
-      <At x="42.4vw" y="73.3vh" z={2}>
+      <At x="42.4vw" y="69vh" z={2}>
         <F sx={14} sy={0} sw={20} sh={17} scale={4.5} />
       </At>
-      <At x="37.8vw" y="73.3vh" z={2}>
+      <At x="37.8vw" y="69vh" z={2}>
         <F sx={14} sy={0} sw={20} sh={17} scale={4.5} />
       </At>
 
@@ -147,7 +144,6 @@ export default function Farm() {
       <At x="27.46vw" y="50.00vh" z={3}>
           <F sx={16} sy={336} sw={20} sh={22} scale={2.7} />
       </At>
-      
       <At x="0.70vw" y="7.50vh" z={3}>
           <F sx={16} sy={336} sw={20} sh={22} scale={2.7} />
       </At>
@@ -158,9 +154,6 @@ export default function Farm() {
           <F sx={16} sy={336} sw={20} sh={22} scale={2.7} />
       </At>
       <At x="90.85vw" y="67.50vh" z={3}>
-          <F sx={16} sy={336} sw={20} sh={22} scale={2.7} />
-      </At>
-      <At x="56.34vw" y="66.25vh" z={3}>
           <F sx={16} sy={336} sw={20} sh={22} scale={2.7} />
       </At>
       <At x="52.82vw" y="53.75vh" z={3}>

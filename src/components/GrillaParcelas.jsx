@@ -6,16 +6,16 @@ const CROPS = "src/assets/crops.png"
 
 const CROP_SPRITES = {
     trigo: {
-        sembrada:  { sx: 0,  sy: 0,  sw: 16, sh: 16 },
-        brotando:  { sx: 16, sy: 0,  sw: 16, sh: 16 },
-        creciendo: { sx: 32, sy: 0,  sw: 16, sh: 16 },
-        listo:     { sx: 48, sy: 0,  sw: 16, sh: 16 },
+        sembrada:  { sx: 0,  sy: 0, sw: 10, sh: 14 },
+        brotando:  { sx: 10,  sy: 26, sw: 6, sh: 6 },
+        creciendo: { sx: 26, sy: 26, sw: 9, sh: 9 },
+        listo:     { sx: 34, sy: 24, sw: 12, sh: 9 },
     },
     zanahoria: {
-        sembrada:  { sx: 0,  sy: 16, sw: 16, sh: 16 },
-        brotando:  { sx: 16, sy: 16, sw: 16, sh: 16 },
-        creciendo: { sx: 32, sy: 16, sw: 16, sh: 16 },
-        listo:     { sx: 48, sy: 16, sw: 16, sh: 16 },
+        sembrada:  { sx: 0,  sy: 28, sw: 6, sh: 6 },
+        brotando:  { sx: 10,  sy: 16, sw: 6, sh: 6 },
+        creciendo: { sx: 26, sy: 16, sw: 9, sh: 9 },
+        listo:     { sx: 34, sy: 13, sw: 12, sh: 9 },
     },
     tomate: {
         sembrada:  { sx: 0,  sy: 0, sw: 10, sh: 14 },
