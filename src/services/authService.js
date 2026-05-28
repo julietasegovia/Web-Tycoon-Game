@@ -12,8 +12,6 @@
 //    POST  /auth/logout  → { ok: true }      (requires Bearer token)
 // ─────────────────────────────────────────────────────────────────────────────
 
-const BASE_URL = import.meta.env.VITE_API_URL ?? "http://localhost:4000/api";
-
 const BASE_URL = window.location.pathname.startsWith('/~')
   ? `/${window.location.pathname.split('/')[1]}/api`
   : 'http://localhost:4000/api';
