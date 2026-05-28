@@ -12,8 +12,6 @@
 //    POST  /auth/logout  → { ok: true }      (requires Bearer token)
 // ─────────────────────────────────────────────────────────────────────────────
 
-const BASE_URL = import.meta.env.VITE_API_URL ?? "http://localhost:4000/api";
-
 const BASE_URL = window.location.pathname.startsWith('/~')
   ? `/${window.location.pathname.split('/')[1]}/api`
   : 'http://localhost:4000/api';
@@ -34,8 +32,17 @@ async function request(endpoint, { method = "GET", body, token } = {}) {
     body: body ? JSON.stringify(body) : undefined,
   });
 
-  const data = await res.json();
-  if (!res.ok) throw new Error(data.message ?? "Something went wrong");
+  // Safely parse JSON — fall back to null if body is empty or not JSON
+  let data = null;
+  const text = await res.text();
+  try {
+    data = text ? JSON.parse(text) : null;
+  } catch {
+    // Server sent back HTML (e.g. a 404 page) or nothing at all
+    if (!res.ok) throw new Error(`Server error ${res.status}: unexpected response format`);
+  }
+
+  if (!res.ok) throw new Error(data?.message ?? "Something went wrong");
   return data;
 }
 
