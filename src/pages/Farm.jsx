@@ -1,5 +1,6 @@
-import GrillaParcelas from "./GrillaParcelas";
-import HUD from "./HUD"
+import GrillaParcelas from "../components/GrillaParcelas";
+import HUD from "../components/HUD"
+import Shop from "../components/Shop";
 
 //LA GRANJA MIDE 1420PX
 const FARM = "src/assets/farm.png";
@@ -35,7 +36,7 @@ export default function Farm() {
       width: "100vw",
       height: "100vh",
       backgroundColor: "#2a7741", // Color césped
-      overflow: "hidden"
+      overflow: "hidden" 
     }}>
 
       {/* 🏠 LA CASA: 240 x 400*/}
@@ -82,35 +83,39 @@ export default function Farm() {
           <F sx={272} sy={0} sw={30} sh={35} scale={3} />
         </At>
 
-      {/* huevos*/}
+      {/* huevos
       <At x={100} y={350} z={3}>
         <F sx={0} sy={144} sw={80} sh={18} scale={3} />
       </At>
+      */}
       
-      {/*gallinas bebe*/}
+      {/*gallinas bebe
       <At x={100} y={400} z={3}>
         <F sx={0} sy={160} sw={80} sh={18} scale={3} />
       </At>
-
-      {/*gallinas bebe*/}
+      */}
+      {/*gallinas bebe
       <At x={100} y={440} z={3}>
         <F sx={0} sy={175} sw={80} sh={18} scale={3} />
       </At>
+      */}
 
       {/*gallinas */}
       <At x={100} y={500} z={3}>
         <F sx={0} sy={190} sw={80} sh={18} scale={3} />
       </At>
       
-      {/*gallinas saltando*/}
+      {/*gallinas 
       <At x={100} y={555} z={3}>
         <F sx={0} sy={208} sw={80} sh={18} scale={3} />
       </At>
+      ??? */}
 
-      {/*gallinas sentadas*/}
+      {/*gallinas sentadas
       <At x={100} y={605} z={3}>
         <F sx={0} sy={225} sw={80} sh={18} scale={3} />
       </At>
+      */}
 
       {/*pasto */}
       <At x={350} y={370} z={3}>
@@ -178,6 +183,7 @@ export default function Farm() {
         <HUD />
 
         {/*Shop */}
+        <Shop/>
         
     </div>
   );
