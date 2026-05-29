@@ -28,6 +28,7 @@ export default function HUD() {
                 borderRadius: 15,
                 padding: "10px 18px",
                 fontFamily: "monospace",
+                maxWidth: "80%"
             }}
         >
         
@@ -39,8 +40,8 @@ export default function HUD() {
                     color: "#f5c542",
                     fontSize: 18,
                     fontWeight: "bold",
-                    width: 65,
-                    marginLeft: 1
+                    minWidth: 65,
+                    marginLeft: 3
                 }}
             >
                 🪙 {oro}

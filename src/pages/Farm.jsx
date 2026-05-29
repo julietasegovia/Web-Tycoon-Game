@@ -175,9 +175,7 @@ export default function Farm() {
         </At>
 
         {/*Grilla de parcelas */}
-        <At x={550} y={290} z={5}>
-          <GrillaParcelas/>
-        </At>
+        <GrillaParcelas/>
 
         {/*HUD */}
         <HUD />
