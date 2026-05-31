@@ -5,8 +5,9 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "esbuild server.js --bundle --platform=node --target=node20 --outdir=dist",
-    "start": "node dist/server.js"
+    "build": "npx prisma generate && esbuild server.js --bundle --platform=node --target=node20 --outdir=dist",
+    "start": "node dist/server.js",
+    "dev": "nodemon server.js"
   },
   "keywords": [],
   "author": "",

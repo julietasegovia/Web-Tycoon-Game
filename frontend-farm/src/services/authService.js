@@ -15,7 +15,7 @@
 // src/config/api.ts
 export const BASE_URL = window.location.pathname.startsWith('/~')
   ? `/${window.location.pathname.split('/')[1]}/api`
-  : 'http://localhost:3005'; 
+  : 'http://localhost:4000/api'; 
 
 // ── Internal helper ───────────────────────────────────────────────────────────
 
