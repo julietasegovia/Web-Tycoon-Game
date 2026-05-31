@@ -54,8 +54,8 @@ export default function AuthLayout({ children }) {
         {/* Hero copy */}
         <div className="relative z-10 space-y-7">
           <h1 className=" text-[5.1rem] leading-[0.9] text-zinc-100 tracking-wide">
-            BUILD<br /><br />
-            <span className="text-amber-400 animate-flicker">YOUR</span><br /><br />
+            BUILD<br />
+            <span className="text-amber-400 animate-flicker">YOUR</span><br />
             OWN BARN
           </h1>
 
