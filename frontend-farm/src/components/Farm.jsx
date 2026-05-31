@@ -142,16 +142,16 @@ export default function Farm() {
       </At>
 
       {/* Cerca de madera — puerta (inferior) */}
-      <At x="51.7vw" y="69vh" z={2}>
+      <At x="51.7vw" y="74.5vh" z={2}>
         <F sx={14} sy={0} sw={44.7} sh={17} scale={4.5} />
       </At>
-      <At x="47.1vw" y="69vh" z={2}>
+      <At x="47.1vw" y="74.5vh" z={2}>
         <F sx={14} sy={0} sw={20} sh={17} scale={4.5} />
       </At>
-      <At x="42.4vw" y="69vh" z={2}>
+      <At x="42.4vw" y="74.5vh" z={2}>
         <F sx={14} sy={0} sw={20} sh={17} scale={4.5} />
       </At>
-      <At x="37.8vw" y="69vh" z={2}>
+      <At x="37.8vw" y="74.5vh" z={2}>
         <F sx={14} sy={0} sw={20} sh={17} scale={4.5} />
       </At>
 
