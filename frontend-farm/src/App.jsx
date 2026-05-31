@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AuthProvider, AuthContext } from "./context/AuthContext";
 import AuthPage from "./pages/AuthPage";
-import Farm from "./pages/Farm";
+import Farm from "./components/Farm";
 
 function AppShell() {
   const { isLoggedIn, loading } = useContext(AuthContext);
