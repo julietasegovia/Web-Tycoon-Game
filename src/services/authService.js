@@ -12,20 +12,21 @@
 //    POST  /auth/logout  → { ok: true }      (requires Bearer token)
 // ─────────────────────────────────────────────────────────────────────────────
 
-const BASE_URL = window.location.pathname.startsWith('/~')
+// src/config/api.ts
+export const BASE_URL = window.location.pathname.startsWith('/~')
   ? `/${window.location.pathname.split('/')[1]}/api`
-  : 'http://localhost:4000/api';
+  : 'http://localhost:3005'; 
 
 // ── Internal helper ───────────────────────────────────────────────────────────
 
 /**
  * Sends a JSON request and returns the parsed response.
- * Throws an Error with the server's message on non-2xx status.
  */
 async function request(endpoint, { method = "GET", body, token } = {}) {
   const headers = { "Content-Type": "application/json" };
   if (token) headers["Authorization"] = `Bearer ${token}`;
 
+  // Ahora sí, esta línea va a usar la URL dinámica correcta en el servidor
   const res = await fetch(`${BASE_URL}${endpoint}`, {
     method,
     headers,
