@@ -6,27 +6,27 @@ const CROPS = "src/assets/crops.png"
 
 const CROP_SPRITES = {
     trigo: {
-        sembrada:  { sx: 0,  sy: 0, sw: 10, sh: 14 },
-        brotando:  { sx: 10,  sy: 26, sw: 6, sh: 6 },
-        creciendo: { sx: 26, sy: 26, sw: 9, sh: 9 },
-        listo:     { sx: 34, sy: 24, sw: 12, sh: 9 },
+        sembrada:  { sx: 53, sy: 12, sw: 10, sh: 12 },
+        brotando:  { sx: 44, sy: 12, sw: 10, sh: 12 },
+        creciendo: { sx: 53, sy: 1,  sw: 10, sh: 12 },
+        listo:     { sx: 44, sy: 0,  sw: 10, sh: 12 },  
     },
     zanahoria: {
-        sembrada:  { sx: 0,  sy: 28, sw: 6, sh: 6 },
-        brotando:  { sx: 10,  sy: 16, sw: 6, sh: 6 },
-        creciendo: { sx: 26, sy: 16, sw: 9, sh: 9 },
-        listo:     { sx: 34, sy: 13, sw: 12, sh: 9 },
+        sembrada:  { sx: 8,  sy: 12, sw: 10, sh: 12 },
+        brotando:  { sx: 17, sy: 12, sw: 10, sh: 12 },
+        creciendo: { sx: 25, sy: 12, sw: 10, sh: 12 },
+        listo:     { sx: 34, sy: 12, sw: 10, sh: 10 },
     },
     tomate: {
-        sembrada:  { sx: 0,  sy: 0, sw: 10, sh: 14 },
-        brotando:  { sx: 9, sy: 0, sw: 10, sh: 14 },
-        creciendo: { sx: 26, sy: 0, sw: 10, sh: 14 },
-        listo:     { sx: 35, sy: 0, sw: 10, sh: 14 },
+        sembrada:  { sx: 8,  sy: 1,  sw: 10, sh: 12 },
+        brotando:  { sx: 17, sy: 1,  sw: 10, sh: 12 },
+        creciendo: { sx: 26, sy: 0,  sw: 10, sh: 14 },
+        listo:     { sx: 35, sy: 0,  sw: 10, sh: 12 },
     },
 }
 
-// ({ruta, posicion en x, pos en y, ancho, alto, ancho sprite, alto sprite, escala (3px) })
-function Spr({ src, sx, sy, sw, sh, nw, nh, scale = 3, style = {}}) {
+// ({ruta, posicion en x, pos en y, ancho, alto, ancho sprite, alto sprite, escala })
+function Spr({ src, sx, sy, sw, sh, nw, nh, scale, style = {}}) {
     return (
         <div
             style={{
@@ -118,8 +118,8 @@ function Parcela({ parcela }) {
 
             style={{
                 position: "relative",
-                width: 96,
-                height: 96,
+                width: "100%",
+                height: "100%",
                 cursor: cursorStyle,
                 borderRadius: 10,
                 border: `2px solid ${borderColor}`,
@@ -127,19 +127,6 @@ function Parcela({ parcela }) {
             }}
         >
 
-            {/* sprite de suelo del como parcela */}
-            <div 
-                style={{ 
-                    position: "absolute", 
-                    inset: 0, 
-                    display: "flex", 
-                    alignItems: "center", 
-                    justifyContent: "center",
-                }}
-            >
-                <F sx={80} sy={320} sw={16} sh={16} scale={6} />
-            </div>
-        
             {/* cultivo encima de la tierra */}
             {spriteData && (
                 <div 
@@ -149,12 +136,13 @@ function Parcela({ parcela }) {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
+                        marginTop: 20,
                     }}
                 >
                     <C
                         sx={spriteData.sx} sy={spriteData.sy}
                         sw={spriteData.sw} sh={spriteData.sh}
-                        scale={4}
+                        scale={5}
                     />
 
                 </div>
@@ -204,29 +192,39 @@ export default function GrillaParcelas() {
                         from { opacity: 0.6; transform: scale(0.9); }
                         to   { opacity: 1.0; transform: scale(1.1); }
                     }
-                    .Parcela:hover {
-                        transform: scale(1.04);
-                    }
                 `}
             </style>
         
-            {/* Grilla 4×3 */}
-            <div 
+            {/* Contenedor centrado */}
+            <div
                 style={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(4, 96px)", // 4 columnas de 96px
-                    gridTemplateRows: "repeat(3, 96px)",    // 3 filas de 96px
-                    gap: 10,                                 // separación entre parcelas
+                    position: "fixed",
+                    top: "60%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    zIndex: 4,
+                    width: "min(450px, 80vw)",
                     padding: 10,
                     background: "rgb(108, 83, 25)",
                     borderRadius: 15,
+                    boxSizing: "border-box",
                 }}
             >
-                {parcelas.map((parcela) => (
-                    <Parcela key={parcela.id} parcela={parcela} />
-                ))}
+                {/* Grilla 4×3 fluida */}
+                <div 
+                    style={{
+                        display: "grid",
+                        gridTemplateColumns: "repeat(4, 1fr)",
+                        gridTemplateRows: "repeat(3, 1fr)",
+                        gap: 10,
+                        aspectRatio: "4 / 3",
+                    }}
+                >
+                    {parcelas.map((parcela) => (
+                        <Parcela key={parcela.id} parcela={parcela} />
+                    ))}
+                </div>
             </div>
         </>
     )
 }
-

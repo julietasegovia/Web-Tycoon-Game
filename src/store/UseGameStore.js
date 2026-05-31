@@ -6,7 +6,7 @@ const CULTIVOS = {
         emoji: "🌾",
         precioCompra: 10,
         precioVenta: 20,
-        tiempoDeCrecimiento: 15,
+        tiempoDeCrecimiento: 60,
         sprites: {
             semilla: { sx: 0,  sy: 0,  sw: 16, sh: 16 },
             brotando:  { sx: 16, sy: 0,  sw: 16, sh: 16 },
@@ -20,7 +20,7 @@ const CULTIVOS = {
         emoji: "🥕",
         precioCompra: 15,
         precioVenta: 35,
-        tiempoDeCrecimiento: 25,
+        tiempoDeCrecimiento: 120,
         sprites: {
             semilla:   { sx: 0,  sy: 16,  sw: 16, sh: 16 },
             brotando:  { sx: 16, sy: 16,  sw: 16, sh: 16 },
@@ -34,13 +34,47 @@ const CULTIVOS = {
         emoji: "🍅",
         precioCompra: 20,
         precioVenta: 50,
-        tiempoDeCrecimiento: 40,
+        tiempoDeCrecimiento: 180,
         sprites: {
             semilla:   { sx: 0,  sy: 32,  sw: 16, sh: 16 },
             brotando:  { sx: 16, sy: 32,  sw: 16, sh: 16 },
             creciendo: { sx: 32, sy: 32,  sw: 16, sh: 16 },
             listo:     { sx: 48, sy: 32,  sw: 16, sh: 16 },
         },
+    },
+};
+
+const BOOSTERS = {
+    X5oro: {
+        nombre: "X5",
+        emoji: "💵",
+        desc: "Ganancias de proxima cosecha X5",
+        precioCompra: 100,
+        
+    },
+
+    sembradoAut: {
+        nombre: "Cosechar Todo",
+        emoji: "👨‍🌾",
+        desc: "Acelera el tiempo de todos los cultivos",
+        precioCompra: 150,
+        
+    },
+
+    X2All: {
+        nombre: "X2",
+        emoji: "💰",
+        desc: "Ganancias de toda la parcela X2",
+        precioCompra: 50,
+        
+    },
+
+    boost4: {
+        nombre: "boost4",
+        emoji: ":)",
+        desc: " ",
+        precioCompra: 50,
+        
     },
 };
 
@@ -62,7 +96,7 @@ function calcEstado(parcela, ahora) {
     const progreso = Math.min((tiempoTranscurrido / cultivo.tiempoDeCrecimiento) * 100, 100) //porcentaje del progreso, el tiempo transcurrido sobre el tiempo de crecimiento
 
     let estado 
-    if (progreso < 25) estado: "sembrada";
+    if (progreso < 25) estado = "sembrada";
     else if (progreso < 55)  estado = "brotando";
     else if (progreso < 90)  estado = "creciendo";
     else                     estado = "listo";
@@ -79,6 +113,9 @@ export const useGameStore = create((set, get) => ({
 
     tiendaAbierta: false,
     catalogo: CULTIVOS,
+    catalogoBoosters: BOOSTERS,
+    boosterSeleccionado: null,
+    boostersActivos: {},
 
     dia: 1,
     hora: 6,
@@ -92,7 +129,6 @@ export const useGameStore = create((set, get) => ({
         if(parcela.estado !== "vacia") 
             return { 
                 ok: false, 
-                msg: "La parcela ya tiene un cultivo"
             };
 
         if(oro < cultivo.precioCompra) 
@@ -119,25 +155,43 @@ export const useGameStore = create((set, get) => ({
     },
 
     cosechar: (parcelaId) => {
-        const { parcelas } = get()
+        const { parcelas, boostersActivos } = get()
         const parcela = parcelas[parcelaId]
 
         if(parcela.estado !== "listo") 
             return { 
                 ok: false,
-                msg: "El cultivo no terminó de crecer"
             };
 
         const cultivo = CULTIVOS[parcela.cultivo];
+        const tieneX5   = (boostersActivos.X5oro   ?? 0) > 0;
+        const tieneX2All = (boostersActivos.X2All ?? 0) > 0;
 
-        set((state) => ({
-            oro: state.oro + cultivo.precioVenta,
-            parcelas : state.parcelas.map((p) => 
-                p.id === parcelaId ?
-                crearParcela(parcelaId) : p
-            ),
-        }));
-        return { ok: true, ganancia: cultivo.precioVenta };
+        let ganancia = cultivo.precioVenta;
+        if (tieneX5)     ganancia *= 10;
+        if (tieneX2All) ganancia *= 2;
+
+        set((state) => {
+            const nuevos = { ...state.boostersActivos };
+            if (tieneX5) {
+                nuevos.X5oro -= 1;
+                if (nuevos.X5oro <= 0) delete nuevos.X5oro;
+            }
+            if (tieneX2All) {
+                nuevos.X2All -= 1;
+                if (nuevos.X2All <= 0) delete nuevos.X2All;
+            }
+
+            return {
+                oro: state.oro + ganancia,
+                boostersActivos: nuevos,
+                parcelas: state.parcelas.map((p) => 
+                    p.id === parcelaId ? crearParcela(parcelaId) : p
+                ),
+            };
+        });
+
+        return { ok: true, ganancia, x5Aplicado: tieneX5 };
     },
     
     actualizarCrecimiento: () => {
@@ -163,6 +217,50 @@ export const useGameStore = create((set, get) => ({
 
     seleccionarCultivo: (cultivo) => {
         if(CULTIVOS[cultivo]) set({ cultivoSeleccionado: cultivo });
+    },
+
+    seleccionarBooster: (boost) => {
+        if(BOOSTERS[boost]) set({ boosterSeleccionado: boost });
+    },
+
+    comprarBooster: (booster) => {
+        const { oro, boostersActivos} = get() 
+        const boost = BOOSTERS[booster]
+
+        if (!boost || oro < boost.precioCompra) return { ok: false }
+
+        if(booster === "sembradoAut"){
+            set((state) => ({
+                oro: state.oro - boost.precioCompra,
+                parcelas: state.parcelas.map((p) => 
+                    p.cultivo && p.estado !== "vacia" 
+                        ? { ...p, estado: "listo", progreso: 100 }
+                        : p 
+                )
+            }))
+            return { ok: true }
+        }
+
+        if(booster === "X2All") {
+            set((state) => ({
+                oro: state.oro - boost.precioCompra,
+                boostersActivos: {
+                    ...state.boostersActivos,
+                    X2All: (state.boostersActivos.X2All ?? 0) + 12,
+                },
+            }));
+            return { ok: true };
+        }
+
+        set((state) => ({
+            oro: state.oro - boost.precioCompra,
+            boostersActivos: {
+                ...state.boostersActivos,
+                [booster]: (state.boostersActivos[booster] ?? 0) + 1,
+            },
+        }));
+
+        return { ok: true };
     },
 
     avanzarTiempo: () => { 
@@ -194,4 +292,4 @@ export const useGameStore = create((set, get) => ({
     }
 }))
 
-export { CULTIVOS };
+export { CULTIVOS, BOOSTERS };
