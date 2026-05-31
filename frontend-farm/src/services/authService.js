@@ -13,9 +13,14 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 // src/config/api.ts
-export const BASE_URL = window.location.pathname.startsWith('/~')
-  ? `/${window.location.pathname.split('/')[1]}/api`
-  : 'http://localhost:4000/api'; 
+// Prefer build-time VITE_API_URL, then the existing /~hosted-path heuristic,
+// finally fall back to a relative `/api` so the browser talks to the same origin.
+const viteApi = typeof import.meta !== 'undefined' ? import.meta.env.VITE_API_URL : undefined;
+export const BASE_URL = viteApi
+  ? (viteApi.endsWith('/') ? viteApi.slice(0, -1) : viteApi) + '/api'
+  : window.location.pathname.startsWith('/~')
+    ? `/${window.location.pathname.split('/')[1]}/api`
+    : '/api';
 
 // ── Internal helper ───────────────────────────────────────────────────────────
 

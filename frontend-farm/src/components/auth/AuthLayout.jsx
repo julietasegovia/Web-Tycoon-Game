@@ -1,15 +1,25 @@
-// ─────────────────────────────────────────────────────────────────────────────
-//  components/auth/AuthLayout.jsx
-//
-//  Two-column shell:  left = branding art,  right = form slot (children).
-//  On mobile it collapses to a single centered column.
-// ─────────────────────────────────────────────────────────────────────────────
-
-// Animated background hex grid (pure CSS/SVG, no deps)
+/**
+ * @fileoverview Shell de layout para las pantallas de autenticación (login / registro).
+ * Divide la pantalla en dos columnas: branding a la izquierda y formulario a la derecha.
+ * En mobile colapsa a una sola columna centrada.
+ *
+ * @author Farm Tycoon
+ * @version 1.0.0
+ */
 
 import background from '../../assets/bg-farm.gif';
 
+// ─────────────────────────────────────────────────────────────────────────────
 
+/**
+ * Anillo decorativo animado con rotación lenta.
+ * Componente interno usado únicamente dentro de AuthLayout.
+ *
+ * @param {Object}  props
+ * @param {number}  props.size      - Diámetro del anillo en píxeles.
+ * @param {string}  props.className - Clases Tailwind adicionales para posicionamiento.
+ * @returns {JSX.Element}
+ */
 function GoldenRing({ size, className }) {
   return (
     <div
@@ -19,12 +29,33 @@ function GoldenRing({ size, className }) {
   );
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Layout de dos columnas para las rutas de autenticación.
+ *
+ * - **Columna izquierda (≥ lg):** panel de branding con imagen de fondo animada,
+ *   overlay oscuro, logo, hero copy y tagline.
+ * - **Columna derecha:** área de formulario que recibe `children`.
+ *   En mobile muestra el logo y centra el formulario.
+ *
+ * @component
+ * @param {Object}      props
+ * @param {JSX.Element} props.children - Formulario de login o registro que se renderiza
+ *                                       en el panel derecho.
+ * @returns {JSX.Element}
+ *
+ * @example
+ * <AuthLayout>
+ *   <LoginForm onSuccess={() => navigate('/farm')} onSwitch={() => setView('signup')} />
+ * </AuthLayout>
+ */
 export default function AuthLayout({ children }) {
   return (
     <div className="min-h-screen flex">
 
       {/* ── LEFT: Branding panel with background image ───────────────────── */}
-      <div 
+      <div
         className="hidden lg:flex lg:w-[52%] flex-col justify-between
                 border-r border-ink-700 p-16 relative overflow-hidden"
         style={{
@@ -68,7 +99,7 @@ export default function AuthLayout({ children }) {
         <div className="flex">
           <p className="pt-4 pr-2 relative z-10 text-[11px] text-ink-600 tracking-widest uppercase">
             Grow your dreams!
-          </p> 
+          </p>
           <p className='text-[20px] ls font-bold mt-1'>𓀚 𓃔𓃽</p>
         </div>
       </div>
