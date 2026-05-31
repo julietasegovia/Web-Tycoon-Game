@@ -183,7 +183,7 @@ export default function Farm() {
         <HUD />
 
         {/*Shop */}
-        
+        <Shop />
     </div>
   );
 }
