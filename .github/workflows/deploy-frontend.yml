@@ -1,4 +1,3 @@
-yaml
 # .github/workflows/deploy-frontend.yml
 name: Desplegar Frontend
 
@@ -46,4 +45,32 @@ jobs:
           name: app-compilada   # El nombre del paquete
           path: frontend/dist   # Ruta a la carpeta 'dist' generada
 
+# ... (dentro del mismo 'job deploy', después del paso 'upload-artifact')
+
+      # 6. Descargar el artefacto que acabamos de subir
+      - name: Descargar artefacto compilado
+        uses: actions/download-artifact@v4
+        with:
+          name: app-compilada
+          path: build-temp  # Lo guardamos temporalmente
+
+      # 7. Enviar los archivos al servidor (copia y pega)
+      - name: Copiar archivos al servidor
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          source: "build-temp/"    #  Lo que está en el robot...
+          target: "/var/www/html/" # ...se copia a esta carpeta en el servidor
+
+      - name: Reiniciar servidor web
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            sudo systemctl restart nginx  # Común para servidores web Linux
+            echo "Despliegue completado"
 
