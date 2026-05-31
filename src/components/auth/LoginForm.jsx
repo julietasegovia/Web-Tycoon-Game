@@ -61,7 +61,7 @@ export default function LoginForm({ onSuccess, onSwitch }) {
             className="field"
             name="password"
             type="password"
-            placeholder="••••••••"
+            placeholder="Min. 8 characters"
             value={form.password}
             onChange={onChange}
             autoComplete="current-password"

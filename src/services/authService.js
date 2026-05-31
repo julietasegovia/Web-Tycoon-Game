@@ -12,26 +12,38 @@
 //    POST  /auth/logout  → { ok: true }      (requires Bearer token)
 // ─────────────────────────────────────────────────────────────────────────────
 
-const BASE_URL = import.meta.env.VITE_API_URL ?? "http://localhost:4000/api";
+// src/config/api.ts
+export const BASE_URL = window.location.pathname.startsWith('/~')
+  ? `/${window.location.pathname.split('/')[1]}/api`
+  : 'http://localhost:3005'; 
 
 // ── Internal helper ───────────────────────────────────────────────────────────
 
 /**
  * Sends a JSON request and returns the parsed response.
- * Throws an Error with the server's message on non-2xx status.
  */
 async function request(endpoint, { method = "GET", body, token } = {}) {
   const headers = { "Content-Type": "application/json" };
   if (token) headers["Authorization"] = `Bearer ${token}`;
 
+  // Ahora sí, esta línea va a usar la URL dinámica correcta en el servidor
   const res = await fetch(`${BASE_URL}${endpoint}`, {
     method,
     headers,
     body: body ? JSON.stringify(body) : undefined,
   });
 
-  const data = await res.json();
-  if (!res.ok) throw new Error(data.message ?? "Something went wrong");
+  // Safely parse JSON — fall back to null if body is empty or not JSON
+  let data = null;
+  const text = await res.text();
+  try {
+    data = text ? JSON.parse(text) : null;
+  } catch {
+    // Server sent back HTML (e.g. a 404 page) or nothing at all
+    if (!res.ok) throw new Error(`Server error ${res.status}: unexpected response format`);
+  }
+
+  if (!res.ok) throw new Error(data?.message ?? "Something went wrong");
   return data;
 }
 

@@ -97,7 +97,7 @@ export default function SignupForm({ onSuccess, onSwitch }) {
           label="Confirm Password"
           name="confirm"
           type="password"
-          placeholder="••••••••"
+          placeholder="Same as above"
           value={form.confirm}
           onChange={onChange}
           error={fieldErrors.confirm}

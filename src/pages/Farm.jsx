@@ -6,7 +6,6 @@ import Shop from "../components/Shop";
 const FARM = "src/assets/farm.png";
 const CROPS = "src/assets/crops.png";
 
-// Clips a region from a sprite sheet
 function Spr({ src, sx, sy, sw, sh, nw, nh, scale = 3, style = {} }) {
   return (
     <div style={{
@@ -25,6 +24,9 @@ function Spr({ src, sx, sy, sw, sh, nw, nh, scale = 3, style = {} }) {
 
 function F(props) { return <Spr src={FARM} nw={512} nh={512} {...props} />; }
 function C(props) { return <Spr src={CROPS} nw={80} nh={176} {...props} />; }
+
+
+// Modified to accept direct vw and vh string percentages
 function At({ x, y, children, z = 1 }) {
   return <div style={{ position: "absolute", left: x, top: y, zIndex: z }}>{children}</div>;
 }
@@ -181,7 +183,6 @@ export default function Farm() {
         <HUD />
 
         {/*Shop */}
-        <Shop/>
         
     </div>
   );
