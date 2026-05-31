@@ -1,0 +1,49 @@
+yaml
+# .github/workflows/deploy-frontend.yml
+name: Desplegar Frontend
+
+# El robot se activará cuando haya un 'push' en la rama 'main'
+on:
+  push:
+    branches: [ "main" ]
+
+# Los trabajos son las tareas que el robot va a ejecutar
+jobs:
+  # Este trabajo se llama 'deploy'
+  deploy:
+    # El robot usará una máquina virtual de Ubuntu para trabajar
+    runs-on: ubuntu-latest
+
+    # Pasos a seguir:
+    steps:
+      # 1. Clonar el código de tu repositorio dentro del robot
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      # 2. Instalar la versión correcta de Node.js
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Usa la versión LTS de Node.js
+
+      # 3. Instalar las dependencias del proyecto
+      # Si tu frontend está en una sub-carpeta, navega a ella primero
+      - name: Instalar dependencias
+        run: |
+          cd frontend       # Cambia 'frontend' por la ruta a tu app
+          npm ci            # 'ci' es para instalaciones limpias en robots
+
+      # 4. ¡El PASO CLAVE! Compilar el proyecto
+      - name: Compilar la app
+        run: |
+          cd frontend       #  Cambia 'frontend' por la ruta a tu app
+          npm run build     # Esto crea la carpeta 'dist'
+
+      # 5. Subir el artefacto (la carpeta 'dist') para usarlo después
+      - name: Subir artefacto de la compilación
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-compilada   # El nombre del paquete
+          path: frontend/dist   # Ruta a la carpeta 'dist' generada
+
+
