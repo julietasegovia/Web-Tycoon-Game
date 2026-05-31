@@ -19,7 +19,8 @@
     "jsonwebtoken": "^9.0.3",
     "sqlite": "^5.1.1",
     "tsx": "^4.22.1",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "vite": "^8.0.14"
   },
   "devDependencies": {
     "prisma": "^5.22.0"
