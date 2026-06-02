@@ -14,6 +14,7 @@
 import { useState, useEffect } from "react";
 import GrillaParcelas from "../components/GrillaParcelas";
 import HUD from "../components/HUD";
+import Shop from "../components/Shop";
 
 // ─── Rutas a los spritesheets ─────────────────────────────────────────────────
 const FARM  = "src/assets/farm.png";
@@ -159,12 +160,12 @@ export default function Farm() {
       {/* ── Siempre visible ─────────────────────────────────────────── */}
 
       {/* 🏠 Casa principal */}
-      <At x="30vw" y="1.25vh" z={2} {...A}>
+      <At x="15vw" y="15vh" z={2} {...A}>
         <F sx={240} sy={400} sw={64} sh={80} scale={3} />
       </At>
 
       {/* Granjero Brown (personaje estático) */}
-      <At x="30vw" y="25vh" z={3} {...A}>
+      <At x="15vw" y="37vh" z={3} {...A}>
         <F sx={272} sy={0} sw={30} sh={35} scale={3} />
       </At>
 
@@ -174,59 +175,62 @@ export default function Farm() {
       {/* HUD con oro, selector de cultivo y botón de tienda */}
       <HUD />
 
-      {/* ── Solo tablet / escritorio ─────────────────────────────────── */}
+      <Shop/>
+
+      {/* ── Solo escritorio ─────────────────────────────────── */}
 
       {/* Casita de madera */}
-      <At x="45vw" y="10.00vh" z={2} {...D}>
+      <At x="5vw" y="60vh" z={2} {...D}>
         <F sx={210} sy={16} sw={56} sh={48} scale={3} />
       </At>
 
-      {/* Granero grande */}
+      {/* Granero grande 
       <At x="10vw" y="30vh" z={3} {...D}>
         <F sx={320} sy={400} sw={80} sh={80} scale={3} />
       </At>
+      */}
 
       {/* Cerca de madera — lateral izquierda */}
-      <At x="34.45vw" y="32vh" z={5} {...D}>
+      <At x="34.45vw" y="22vh" z={5} {...D}>
         <F sx={0} sy={0} sw={4} sh={50} scale={4.5} />
       </At>
-      <At x="34.45vw" y="55vh" z={5} {...D}>
+      <At x="34.45vw" y="47vh" z={5} {...D}>
         <F sx={0} sy={0} sw={4} sh={50} scale={4.5} />
       </At>
 
       {/* Cerca de madera — lateral derecha */}
-      <At x="64.4vw" y="31vh" z={5} {...D}>
+      <At x="64.4vw" y="21vh" z={5} {...D}>
         <F sx={0} sy={0} sw={4} sh={50} scale={4.5} />
       </At>
-      <At x="64.4vw" y="56vh" z={5} {...D}>
+      <At x="64.4vw" y="48vh" z={5} {...D}>
         <F sx={0} sy={0} sw={4} sh={50} scale={4.5} />
       </At>
 
       {/* Cerca de madera — puerta (inferior) */}
-      <At x="52.1vw" y="76vh" z={5} {...D}>
+      <At x="52.1vw" y="70vh" z={5} {...D}>
         <F sx={14} sy={0} sw={44.7} sh={17} scale={4.5} />
       </At>
-      <At x="46.2vw" y="76vh" z={5} {...D}>
+      <At x="46.2vw" y="70vh" z={5} {...D}>
         <F sx={14} sy={0} sw={20} sh={17} scale={4.5} />
       </At>
-      <At x="40.4vw" y="76vh" z={5} {...D}>
+      <At x="40.4vw" y="70vh" z={5} {...D}>
         <F sx={14} sy={0} sw={20} sh={17} scale={4.5} />
       </At>
-      <At x="34.6vw" y="76vh" z={5} {...D}>
+      <At x="34.6vw" y="70vh" z={5} {...D}>
         <F sx={14} sy={0} sw={20} sh={17} scale={4.5} />
       </At>
 
       {/* Cerca de madera — arriba */}
-      <At x="52.4vw" y="31vh" z={3} {...D}>
+      <At x="52.4vw" y="20vh" z={3} {...D}>
         <F sx={14} sy={0} sw={41.1} sh={17} scale={4.5} />
       </At>
-      <At x="46.6vw" y="31vh" z={3} {...D}>
+      <At x="46.6vw" y="20vh" z={3} {...D}>
         <F sx={14} sy={0} sw={20} sh={17} scale={4.5} />
       </At>
-      <At x="40.8vw" y="31vh" z={3} {...D}>
+      <At x="40.8vw" y="20vh" z={3} {...D}>
         <F sx={14} sy={0} sw={20} sh={17} scale={4.5} />
       </At>
-      <At x="35.6vw" y="31vh" z={3} {...D}>
+      <At x="35.6vw" y="20vh" z={3} {...D}>
         <F sx={14} sy={0} sw={18} sh={17} scale={4.5} />
       </At>
 
@@ -277,7 +281,7 @@ export default function Farm() {
       </At>
 
       {/* Troncos cortados */}
-      <At x="5vw" y="47vh" z={2} {...D}>
+      <At x="9.7vw" y="31.5vh" z={2} {...D}>
         <F sx={208} sy={112} sw={32} sh={48} scale={2.5} />
       </At>
 
