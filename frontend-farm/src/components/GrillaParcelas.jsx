@@ -10,11 +10,8 @@
 import { useEffect } from "react";
 import { useGameStore } from "../store/UseGameStore";
 
-// ─── Rutas a los spritesheets ─────────────────────────────────────────────────
 const FARM  = "src/assets/farm.png";
 const CROPS = "src/assets/crops.png";
-
-// ─────────────────────────────────────────────────────────────────────────────
 
 /**
  * Mapa de sprites por cultivo y estado de crecimiento.
@@ -27,6 +24,7 @@ const CROPS = "src/assets/crops.png";
  * const sprite = CROP_SPRITES.trigo.listo
  * // { sx: 44, sy: 0, sw: 10, sh: 12 }
  */
+
 const CROP_SPRITES = {
   trigo: {
     sembrada:  { sx: 53, sy: 12, sw: 10, sh: 12 },
@@ -48,8 +46,6 @@ const CROP_SPRITES = {
   },
 };
 
-// ─────────────────────────────────────────────────────────────────────────────
-
 /**
  * Renderiza un recorte de un spritesheet usando `background-position`.
  *
@@ -65,6 +61,7 @@ const CROP_SPRITES = {
  * @param {Object} [props.style] - Estilos inline adicionales.
  * @returns {JSX.Element}
  */
+
 function Spr({ src, sx, sy, sw, sh, nw, nh, scale, style = {} }) {
   return (
     <div
@@ -98,6 +95,7 @@ function C(props) { return <Spr src={CROPS} nw={80}  nh={176} {...props} />; }
  * @param {number} props.progreso - Porcentaje de crecimiento (0–100).
  * @returns {JSX.Element}
  */
+
 function BarraProgreso({ progreso }) {
   const color =
     progreso < 40 ? "#a3d977" :
@@ -149,6 +147,8 @@ function BarraProgreso({ progreso }) {
  * @param {ParcelaData} props.parcela - Datos de estado de la parcela.
  * @returns {JSX.Element}
  */
+
+
 function Parcela({ parcela }) {
   const sembrar       = useGameStore((s) => s.sembrar);
   const cosechar      = useGameStore((s) => s.cosechar);
@@ -254,11 +254,10 @@ function Parcela({ parcela }) {
  * @returns {JSX.Element}
  *
  * @example
- * // Se usa dentro de Farm.jsx, posicionado con el componente At
- * <At x="38.73vw" y="36.25vh" z={5}>
+ * // Se usa dentro de Farm.jsx, con las posiciones responsive definidas aca
  *   <GrillaParcelas />
- * </At>
  */
+
 export default function GrillaParcelas() {
   const parcelas             = useGameStore((s) => s.parcelas);
   const actualizarCrecimiento = useGameStore((s) => s.actualizarCrecimiento);
@@ -285,7 +284,7 @@ export default function GrillaParcelas() {
         `}
       </style>
 
-      {/* Panel centrado que contiene la grilla */}
+      {/* Panel centrado que contiene la grilla, aca se define la posicion: fixed para que no se mueva*/}
       <div
         style={{
           position: "fixed",
@@ -307,7 +306,7 @@ export default function GrillaParcelas() {
             gridTemplateColumns: "repeat(4, 1fr)",
             gridTemplateRows: "repeat(3, 1fr)",
             gap: 10,
-            aspectRatio: "4 / 3",
+            aspectRatio: "4 / 3", 
           }}
         >
           {parcelas.map((parcela) => (
