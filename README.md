@@ -13,7 +13,7 @@ Both of us have an itermmidiate web development knowledge and wanted to achieve 
 - Usage of Git
 - And More
 
-This is also our first collaborative development, so we'll gain experience working as a team as well. We expect to finish this project in under 200hrs of corde. We'll update this readme every 5 hours.
+This is also our first collaborative development, so we'll gain experience working as a team as well. We expect to finish this project in under 200hrs of code.
 
 ## Login / Singup Logic
 First things first. To play the game the user should make an account by signing up or log in to an existing account. 
