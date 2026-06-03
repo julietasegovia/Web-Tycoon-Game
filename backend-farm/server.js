@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+
 const express = require('express');
 const cors    = require('cors');
 const bcrypt  = require('bcrypt');
@@ -72,6 +73,7 @@ app.post('/api/auth/login', async (req, res) => {
     return res.status(400).json({ message: 'Email and password are required' });
   }
 
+  console.log("Database URL Check:", process.env.DATABASE_URL);
   try {
     const user = await prisma.user.findUnique({ where: { email } });
     if (!user) {

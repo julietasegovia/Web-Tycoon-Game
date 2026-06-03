@@ -1,4 +1,11 @@
 import { create } from "zustand";
+import sembrarAudioPath from "../assets/planting.mp3";
+import cosecharAudioPath from "../assets/harvesting.mp3";
+
+const EfectosSonido = {
+    sembrar: new Audio(sembrarAudioPath),
+    cosechar: new Audio(cosecharAudioPath),
+};
 
 const CULTIVOS = {
     trigo: {
@@ -82,7 +89,7 @@ function crearParcela(id) {
     return {
         id,
         estado: "vacia", //"vacia", "sembrada", "brotando", "creciendo"
-        cultivos: null,
+        cultivo: null,
         progreso: 0,
         tiempoPlantado: null,
     };
@@ -122,7 +129,7 @@ export const useGameStore = create((set, get) => ({
     timerActivo: false, 
 
     sembrar: (parcelaId) => {
-        const { parcelas, cultivoSeleccionado, inventario, oro } = get();
+        const { parcelas, cultivoSeleccionado, oro } = get();
         const parcela = parcelas[parcelaId];
         const cultivo = CULTIVOS[cultivoSeleccionado];
 
@@ -137,6 +144,7 @@ export const useGameStore = create((set, get) => ({
                 msg: "No tienes suficiente dinero"
             };
 
+        EfectosSonido.sembrar.play().catch(() => {});
         set((state) => ({
             oro: state.oro - cultivo.precioCompra,
             parcelas: state.parcelas.map((p) => 
@@ -168,9 +176,10 @@ export const useGameStore = create((set, get) => ({
         const tieneX2All = (boostersActivos.X2All ?? 0) > 0;
 
         let ganancia = cultivo.precioVenta;
-        if (tieneX5)     ganancia *= 10;
+        if (tieneX5)     ganancia *= 5;
         if (tieneX2All) ganancia *= 2;
 
+        EfectosSonido.cosechar.play().catch(() => {});
         set((state) => {
             const nuevos = { ...state.boostersActivos };
             if (tieneX5) {
@@ -224,7 +233,7 @@ export const useGameStore = create((set, get) => ({
     },
 
     comprarBooster: (booster) => {
-        const { oro, boostersActivos} = get() 
+        const { oro } = get() 
         const boost = BOOSTERS[booster]
 
         if (!boost || oro < boost.precioCompra) return { ok: false }
