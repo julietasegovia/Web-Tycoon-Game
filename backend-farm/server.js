@@ -33,6 +33,7 @@ function requireAuth(req, res, next) {
 // ── POST /api/auth/signup ────────────────────────────────────────────────────
 
 app.post('/api/auth/signup', async (req, res) => {
+  console.log("holaaaaaaaaaaaaaaaaaaaaaaa llegue ")
   const { username, email, password } = req.body;
 
   if (!username || !email || !password) {
