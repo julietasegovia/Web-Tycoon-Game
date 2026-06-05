@@ -47,6 +47,8 @@ export default function HUD() {
   const cultivoSeleccionado = useGameStore((s) => s.cultivoSeleccionado);
   const seleccionarCultivo  = useGameStore((s) => s.seleccionarCultivo);
   const abrirTienda         = useGameStore((s) => s.abrirTienda);
+  const streakDias           = useGameStore((s) => s.streakDias);
+  const multiplicadorStreak  = useGameStore((s) => s.multiplicadorStreak);
 
   return (
     <div
