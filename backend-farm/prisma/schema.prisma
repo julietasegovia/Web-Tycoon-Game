@@ -4,14 +4,15 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url      = env("DATABASE_URL")
+  url      = "file:./dev.db"
 }
 
-model main.User {
+model User {
   id        Int      @id @default(autoincrement())
-  email     String   @unique
   username  String   @unique
-  password  String
+  email     String   @unique
+  password  String   // bcrypt hash — never store plaintext
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  @@map("users")
 }
