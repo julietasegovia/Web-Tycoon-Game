@@ -19,7 +19,7 @@ import Shop from "../components/Shop";
 // ─── Rutas a los spritesheets ─────────────────────────────────────────────────
 const FARM  = "src/assets/farm.png";
 const CROPS = "src/assets/crops.png";
-const BG = "src/assets/fondo.png";
+const BG = "src/assets/fondo1.png";
 const ARB = "src/assets/arbol1.png";
 
 /**
@@ -173,13 +173,18 @@ export default function Farm() {
       {/* ── Siempre visible ─────────────────────────────────────────── */}
 
       {/* 🏠 Casa principal */}
-      <At x="15vw" y="15vh" z={2} {...A}>
-        <F sx={240} sy={400} sw={64} sh={80} scale={3} />
+      <At x="12vw" y="5vh" z={2} {...A}>
+        <F sx={240} sy={400} sw={64} sh={80} scale={4} />
       </At>
 
       {/* Granjero Brown (personaje estático) */}
-      <At x="15vw" y="37vh" z={3} {...A}>
+      <At x="12vw" y="40vh" z={3} {...A}>
         <F sx={272} sy={0} sw={30} sh={35} scale={3} />
+      </At>
+
+      {/* Troncos cortados */}
+      <At x="6.5vw" y="32vh" z={2} {...D}>
+        <F sx={208} sy={112} sw={32} sh={48} scale={2.5} />
       </At>
 
       {/* Grilla de parcelas de cultivos (interactiva) */}
@@ -190,11 +195,18 @@ export default function Farm() {
 
       <Shop/>
 
-      {/* ── Solo escritorio ─────────────────────────────────── */}
 
-      {/* Casita de madera */}
-      <At x="5vw" y="60vh" z={2} {...D}>
-        <F sx={210} sy={16} sw={56} sh={48} scale={3} />
+      {/* granero? */}
+      <At x="80vw" y="30vh" z={2} {...D}>
+        <F sx={210} sy={16} sw={56} sh={48} scale={3.5} />
+      </At>
+
+      {/* Árboles*/}
+      <At x="70vw" y="62vh" z={2} {...D}>
+        <T sx={0} sy={0} sw={200} sh={300} scale={1.2} />
+      </At>
+      <At x="77vw" y="72vh" z={2} {...D}>
+        <T sx={0} sy={0} sw={200} sh={300} scale={1} />
       </At>
 
       {/* Granero grande 
@@ -203,7 +215,8 @@ export default function Farm() {
       </At>
       */}
 
-      {/* Cerca de madera — lateral izquierda */}
+        {/* cerca
+      {/* Cerca de madera — lateral izquierda 
       <At x="34.45vw" y="22vh" z={5} {...D}>
         <F sx={0} sy={0} sw={4} sh={50} scale={4.5} />
       </At>
@@ -211,7 +224,7 @@ export default function Farm() {
         <F sx={0} sy={0} sw={4} sh={50} scale={4.5} />
       </At>
 
-      {/* Cerca de madera — lateral derecha */}
+      {/* Cerca de madera — lateral derecha 
       <At x="64.4vw" y="21vh" z={5} {...D}>
         <F sx={0} sy={0} sw={4} sh={50} scale={4.5} />
       </At>
@@ -219,7 +232,7 @@ export default function Farm() {
         <F sx={0} sy={0} sw={4} sh={50} scale={4.5} />
       </At>
 
-      {/* Cerca de madera — puerta (inferior) */}
+      {/* Cerca de madera — puerta (inferior) 
       <At x="52.1vw" y="70vh" z={5} {...D}>
         <F sx={14} sy={0} sw={44.7} sh={17} scale={4.5} />
       </At>
@@ -233,7 +246,7 @@ export default function Farm() {
         <F sx={14} sy={0} sw={20} sh={17} scale={4.5} />
       </At>
 
-      {/* Cerca de madera — arriba */}
+      {/* Cerca de madera — arriba 
       <At x="52.4vw" y="20vh" z={3} {...D}>
         <F sx={14} sy={0} sw={41.1} sh={17} scale={4.5} />
       </At>
@@ -246,6 +259,8 @@ export default function Farm() {
       <At x="35.6vw" y="20vh" z={3} {...D}>
         <F sx={14} sy={0} sw={18} sh={17} scale={4.5} />
       </At>
+
+      */}
 
       {/* Árboles decorativos (borde derecho) 
       <At x="90vw" y="7.50vh" z={2} {...D}>
@@ -262,15 +277,6 @@ export default function Farm() {
       </At>
     */}
 
-      {/* 🌳 Árboles personalizados con el nuevo spritesheet */}
-      <At x="75vw" y="20vh" z={2} {...D}>
-        <T sx={0} sy={0} sw={200} sh={300} scale={1.2} />
-      </At>
-      <At x="82vw" y="30vh" z={2} {...D}>
-        <T sx={0} sy={0} sw={200} sh={300} scale={1} />
-      </At>
-
-
       {/* Mesas exteriores 
       <At x="77.46vw" y="58.75vh" z={3} {...D}>
         <F sx={445} sy={272} sw={70} sh={24} scale={2.7} />
@@ -280,10 +286,6 @@ export default function Farm() {
       </At>
       */}
 
-      {/* Troncos cortados */}
-      <At x="9.7vw" y="31.5vh" z={2} {...D}>
-        <F sx={208} sy={112} sw={32} sh={48} scale={2.5} />
-      </At>
 
     </div>
   );
