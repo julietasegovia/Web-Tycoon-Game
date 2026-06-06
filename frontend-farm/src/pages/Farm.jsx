@@ -19,6 +19,15 @@ import Shop from "../components/Shop";
 // ─── Rutas a los spritesheets ─────────────────────────────────────────────────
 const FARM  = "src/assets/farm.png";
 const CROPS = "src/assets/crops.png";
+const BG = "src/assets/fondo.png";
+const ARB = "src/assets/arbol1.png";
+
+/**
+ * Wrapper para el spritesheet de árboles (arbol.png)
+ */
+function T(props) { 
+  return <Spr src={ARB} nw={512} nh={512} {...props} />; 
+}
 
 // ─── Breakpoint ──────────────────────────────────────────────────────────────
 const TABLET_SIZE = 768;
@@ -153,7 +162,11 @@ export default function Farm() {
       position: "relative",
       width: "100vw",
       height: "100vh",
-      backgroundColor: "#2a7741",
+      backgroundImage: `url(${BG})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+      imageRendering: "pixelated",
       overflow: "hidden"
     }}>
 
@@ -234,7 +247,7 @@ export default function Farm() {
         <F sx={14} sy={0} sw={18} sh={17} scale={4.5} />
       </At>
 
-      {/* Árboles decorativos (borde derecho) */}
+      {/* Árboles decorativos (borde derecho) 
       <At x="90vw" y="7.50vh" z={2} {...D}>
         <F sx={64} sy={5} sw={33} sh={45} scale={3} />
       </At>
@@ -247,38 +260,25 @@ export default function Farm() {
       <At x="90vw" y="37.50vh" z={2} {...D}>
         <F sx={160} sy={5} sw={33} sh={45} scale={3} />
       </At>
+    */}
+
+      {/* 🌳 Árboles personalizados con el nuevo spritesheet */}
+      <At x="75vw" y="20vh" z={2} {...D}>
+        <T sx={0} sy={0} sw={200} sh={300} scale={1.2} />
+      </At>
+      <At x="82vw" y="30vh" z={2} {...D}>
+        <T sx={0} sy={0} sw={200} sh={300} scale={1} />
+      </At>
 
 
-      {/* Pasto decorativo */}
-      <At x="24.65vw" y="46.25vh" z={1} {...D}>
-        <F sx={16} sy={336} sw={20} sh={22} scale={2.7} />
-      </At>
-      <At x="27.46vw" y="50.00vh" z={1} {...D}>
-        <F sx={16} sy={336} sw={20} sh={22} scale={2.7} />
-      </At>
-      <At x="0.70vw" y="7.50vh" z={1} {...D}>
-        <F sx={16} sy={336} sw={20} sh={22} scale={2.7} />
-      </At>
-      <At x="73.94vw" y="46.25vh" z={1} {...D}>
-        <F sx={16} sy={336} sw={20} sh={22} scale={2.7} />
-      </At>
-      <At x="88.03vw" y="71.25vh" z={1} {...D}>
-        <F sx={16} sy={336} sw={20} sh={22} scale={2.7} />
-      </At>
-      <At x="90.85vw" y="67.50vh" z={1} {...D}>
-        <F sx={16} sy={336} sw={20} sh={22} scale={2.7} />
-      </At>
-      <At x="52.82vw" y="53.75vh" z={1} {...D}>
-        <F sx={16} sy={336} sw={20} sh={22} scale={2.7} />
-      </At>
-
-      {/* Mesas exteriores */}
+      {/* Mesas exteriores 
       <At x="77.46vw" y="58.75vh" z={3} {...D}>
         <F sx={445} sy={272} sw={70} sh={24} scale={2.7} />
       </At>
       <At x="70.42vw" y="68.75vh" z={3} {...D}>
         <F sx={445} sy={300} sw={70} sh={24} scale={2.7} />
       </At>
+      */}
 
       {/* Troncos cortados */}
       <At x="9.7vw" y="31.5vh" z={2} {...D}>
