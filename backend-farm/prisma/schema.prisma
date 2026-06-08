@@ -7,6 +7,14 @@ datasource db {
   url      = "file:./dev.db"
 }
 
+model GameState {
+  id Int @id @default(autoincrement())
+  userId Int @unique
+  user User @relation(fields: [userId], references: [id])
+  data String
+  updatedAt DateTime @updatedAt
+}
+
 model User {
   id        Int      @id @default(autoincrement())
   username  String   @unique
@@ -14,5 +22,7 @@ model User {
   password  String   // bcrypt hash — never store plaintext
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  gameState GameState?
+
   @@map("users")
 }

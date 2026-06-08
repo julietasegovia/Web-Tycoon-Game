@@ -15,12 +15,13 @@
 // src/config/api.ts
 // Prefer build-time VITE_API_URL, then the existing /~hosted-path heuristic,
 // finally fall back to a relative `/api` so the browser talks to the same origin.
+// src/services/authService.js
+
 const viteApi = typeof import.meta !== 'undefined' ? import.meta.env.VITE_API_URL : undefined;
+
 export const BASE_URL = viteApi
   ? (viteApi.endsWith('/') ? viteApi.slice(0, -1) : viteApi) + '/api'
-  : window.location.pathname.startsWith('/~')
-    ? `/${window.location.pathname.split('/')[1]}/api`
-    : '/api';
+  : '/api';  // ← Always use relative path; let Vite's proxy handle it
 
 // ── Internal helper ───────────────────────────────────────────────────────────
 

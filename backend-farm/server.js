@@ -111,6 +111,33 @@ app.get('/api/auth/me', requireAuth, async (req, res) => {
   }
 });
 
+app.get('/api/game/state', requireAuth, async (req, res) => {
+  try {
+    const save = await prisma.gameState.findUnique({
+      where: { userId: req.user.id }
+    });
+    res.json({ state: save ? JSON.parse(save.data) : null }); // ← parse on read
+  } catch (err) {
+    console.error('GET /api/game/state error:', err.message);
+    res.status(500).json({ message: 'Failed to load game state' });
+  }
+});
+
+app.put('/api/game/state', requireAuth, async (req, res) => {
+  try {
+    const { state } = req.body;
+    const save = await prisma.gameState.upsert({
+      where:  { userId: req.user.id },
+      update: { data: JSON.stringify(state) }, // ← stringify on write
+      create: { userId: req.user.id, data: JSON.stringify(state) },
+    });
+    res.json({ updatedAt: save.updatedAt });
+  } catch (err) {
+    console.error('PUT /api/game/state error:', err.message);
+    res.status(500).json({ message: 'Failed to save game state' });
+  }
+});
+
 // ── POST /api/auth/logout ────────────────────────────────────────────────────
 // JWTs are stateless — the real logout happens client-side (AuthContext clears
 // localStorage). This endpoint exists so the frontend call doesn't 404.

@@ -10,10 +10,12 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import * as authService from "../services/authService";
+import { useGameStore } from "../store/UseGameStore";
 
 export function useAuth() {
   const { saveSession, clearSession, ...authState } = useContext(AuthContext);
 
+  const loadGameState = useGameStore((s) => s.loadGameState);
   const [loading, setLoading] = useState(false);
   const [error,   setError]   = useState(null);
 
@@ -34,18 +36,26 @@ export function useAuth() {
   }
 
   async function handleLogin(formData) {
-    setError(null);
-    setLoading(true);
-    try {
-      const result = await authService.login(formData);
-      saveSession(result);
-      return result;
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
+  setError(null);
+  setLoading(true);
+  try {
+    const result = await authService.login(formData);
+    saveSession(result);
+
+    // Load saved game state after login
+    const { state } = await fetch('/api/game/state', {
+      headers: { Authorization: `Bearer ${result.token}` }
+    }).then(r => r.json());
+
+    if (state) loadGameState(state); // your Zustand action
+
+    return result;
+  } catch (err) {
+    setError(err.message);
+  } finally {
+    setLoading(false);
   }
+}
 
   async function handleLogout() {
     try {

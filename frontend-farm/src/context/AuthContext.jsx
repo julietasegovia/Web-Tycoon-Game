@@ -10,6 +10,7 @@
 
 import { createContext, useState, useEffect } from "react";
 import { getMe } from "../services/authService";
+import { useGameStore } from "../store/UseGameStore";
 
 export const AuthContext = createContext(null);
 
@@ -22,14 +23,26 @@ export function AuthProvider({ children }) {
 
   // Restore session on first load if a token exists
   useEffect(() => {
-    if (!token) return;
+  const token = localStorage.getItem(TOKEN_KEY); // ← use the constant
 
-    getMe(token)
-      .then(({ user }) => setUser(user))
-      .catch(() => clearSession())   // expired or invalid → wipe it
-      .finally(() => setLoading(false));
-  }, []);               // eslint-disable-line react-hooks/exhaustive-deps
+  if (!token) {
+    setLoading(false); // ← must set false here too
+    return;
+  }
 
+  getMe(token)
+    .then(async ({ user }) => {
+      saveSession({ user, token });
+
+      const { state } = await fetch('/api/game/state', {
+        headers: { Authorization: `Bearer ${token}` }
+      }).then(r => r.json());
+
+      if (state) useGameStore.getState().loadGameState(state);
+    })
+    .catch(() => clearSession())
+    .finally(() => setLoading(false));
+}, []);
   // ── Helpers ──────────────────────────────────────────────────────────────────
 
   function saveSession({ user, token }) {
