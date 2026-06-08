@@ -64,7 +64,7 @@ const BOOSTERS = {
         nombre: "Cosechar Todo",
         emoji: "👨‍🌾",
         desc: "Acelera el tiempo de todos los cultivos",
-        precioCompra: 150,
+        precioCompra: 500,
         
     },
 
@@ -72,16 +72,15 @@ const BOOSTERS = {
         nombre: "X2",
         emoji: "💰",
         desc: "Ganancias de toda la parcela X2",
-        precioCompra: 50,
+        precioCompra: 1000,
         
     },
 
-    boost4: {
-        nombre: "boost4",
-        emoji: ":)",
-        desc: " ",
-        precioCompra: 50,
-        
+    X10All: {
+        nombre: "X10",
+        emoji: "💰",
+        desc: "Ganancias de toda la parcela X10",
+        precioCompra: 5000,
     },
 };
 
@@ -172,12 +171,14 @@ export const useGameStore = create((set, get) => ({
             };
 
         const cultivo = CULTIVOS[parcela.cultivo];
-        const tieneX5   = (boostersActivos.X5oro   ?? 0) > 0;
+        const tieneX5   = (boostersActivos.X5oro ?? 0) > 0;
         const tieneX2All = (boostersActivos.X2All ?? 0) > 0;
+        const tieneX10All = (boostersActivos.X10All ?? 0) > 0;
 
         let ganancia = cultivo.precioVenta;
-        if (tieneX5)     ganancia *= 5;
+        if (tieneX5) ganancia *= 5;
         if (tieneX2All) ganancia *= 2;
+        if (tieneX10All) ganancia *= 10;
 
         EfectosSonido.cosechar.play().catch(() => {});
         set((state) => {
@@ -189,6 +190,10 @@ export const useGameStore = create((set, get) => ({
             if (tieneX2All) {
                 nuevos.X2All -= 1;
                 if (nuevos.X2All <= 0) delete nuevos.X2All;
+            }
+            if (tieneX10All) {
+                nuevos.X10All -= 1;
+                if (nuevos.X10All <= 0) delete nuevos.X10All;
             }
 
             return {
@@ -256,6 +261,17 @@ export const useGameStore = create((set, get) => ({
                 boostersActivos: {
                     ...state.boostersActivos,
                     X2All: (state.boostersActivos.X2All ?? 0) + 12,
+                },
+            }));
+            return { ok: true };
+        }
+
+        if(booster === "X10All") {
+            set((state) => ({
+                oro: state.oro - boost.precioCompra,
+                boostersActivos: {
+                    ...state.boostersActivos,
+                    X10All: (state.boostersActivos.X10All ?? 0) + 12,
                 },
             }));
             return { ok: true };
