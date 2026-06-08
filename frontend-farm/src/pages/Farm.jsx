@@ -30,7 +30,7 @@ function T(props) {
 }
 
 // ─── Breakpoint ──────────────────────────────────────────────────────────────
-const TABLET_SIZE = 768;
+const TABLET_SIZE = 1000;
 
 /**
  * Hook que devuelve `true` cuando el viewport es de escritorio/tablet (≥768px).
@@ -170,24 +170,22 @@ export default function Farm() {
       overflow: "hidden"
     }}>
 
-      {/* ── Siempre visible ─────────────────────────────────────────── */}
-
       {/* 🏠 Casa principal */}
-      <At x="12vw" y="5vh" z={2} {...A}>
+      <At x="7vw" y="5vh" z={2} {...D}>
         <F sx={240} sy={400} sw={64} sh={80} scale={4} />
       </At>
 
       {/* Granjero Brown (personaje estático) */}
-      <At x="12vw" y="40vh" z={3} {...A}>
+      <At x="7vw" y="40vh" z={3} {...A}>
         <F sx={272} sy={0} sw={30} sh={35} scale={3} />
       </At>
 
-      {/* Troncos cortados */}
-      <At x="6.5vw" y="32vh" z={2} {...D}>
+      {/* Troncos cortados
+      <At x="24vw" y="30vh" z={2} {...D}>
         <F sx={208} sy={112} sw={32} sh={48} scale={2.5} />
-      </At>
+      </At> */}
 
-      {/* Grilla de parcelas de cultivos (interactiva) */}
+      {/* Grilla de parcelas (interactiva) */}
       <GrillaParcelas />
 
       {/* HUD con oro, selector de cultivo y botón de tienda */}

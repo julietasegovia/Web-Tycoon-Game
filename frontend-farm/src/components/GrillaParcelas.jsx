@@ -292,7 +292,7 @@ export default function GrillaParcelas() {
           left: "50%",
           transform: "translate(-50%, -50%)",
           zIndex: 4,
-          width: "min(450px, 80vw)",
+          width: "min(60%, 500px)",
           padding: 10,
           background: "rgb(108, 83, 25)",
           borderRadius: 15,
