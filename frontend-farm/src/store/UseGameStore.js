@@ -314,7 +314,22 @@ export const useGameStore = create((set, get) => ({
         return parcelas    
         .filter((p) => p.estado === "listo")    
         .reduce((acc, p) => acc + (CULTIVOS[p.cultivo]?.precioVenta ?? 0), 0)
-    }
+    },
+
+   // In UseGameStore.js - add this action
+loadGameState: (savedState) => {
+  if (!savedState) return;
+  
+  set({
+    oro: savedState.oro ?? 50,
+    inventario: savedState.inventario ?? {},
+    cultivoSeleccionado: savedState.cultivoSeleccionado ?? "trigo",
+    parcelas: savedState.parcelas ?? Array.from({ length: 12 }, (_, i) => crearParcela(i)),
+    boostersActivos: savedState.boostersActivos ?? {},
+    dia: savedState.dia ?? 1,
+    hora: savedState.hora ?? 6,
+  });
+},
 }))
 
 export { CULTIVOS, BOOSTERS };

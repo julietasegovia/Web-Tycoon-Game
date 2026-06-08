@@ -19,7 +19,7 @@ function AppShell() {
     }))
   );
 
-  useAutosave(gameState, token);
+  useAutosave(token, 5000);
 
   if (loading) {
     return (
@@ -29,7 +29,7 @@ function AppShell() {
         </span>
       </div>
     );
-  }
+  }  
 
   return isLoggedIn ? <Farm /> : <AuthPage />;
 }
