@@ -38,5 +38,7 @@ The space is simple, for now, consisting of a grid of drit where the user is abl
 We plan to give the user the option of purchasing multipliers for the selling price, the feature of acumulating crops without having to harvest them manually, and others to make the game more dynamic.
 
 ![Farm Display](/doc_imgs/farm.png)
+<img width="1918" height="1078" alt="image" src="https://github.com/user-attachments/assets/4f9e3ed6-71d7-4e9c-825f-64f234842e11" />
+
 
 As you can see at the bottom, we added a HUD that displays the current amount of money and lets you select what seeds you want to plant, there's also a button to access the shop, which we'll add later on.
