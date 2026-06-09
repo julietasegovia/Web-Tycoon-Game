@@ -10,10 +10,14 @@ const app    = express();
 const prisma = new PrismaClient();
 
 const JWT_SECRET = process.env.JWT_SECRET || 'change-this-secret-in-production';
-const PORT       = process.env.PORT || 4000;
+const PORT       = process.env.PORT || 3005;
 
-app.use(cors());
 app.use(express.json());
+// At the top where you have app.use(cors());
+app.use(cors({
+  origin: true,  // Allow any origin temporarily for debugging
+  credentials: true
+}));
 
 // ── Middleware: verify Bearer token ──────────────────────────────────────────
 
@@ -148,6 +152,7 @@ app.post('/api/auth/logout', requireAuth, (_req, res) => {
 
 // ── Start ────────────────────────────────────────────────────────────────────
 
-app.listen(PORT, () => {
-  console.log(`✅ Farm server running on http://localhost:${PORT}`);
+// Change this line at the bottom of server.js:
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`✅ Farm server running on http://0.0.0.0:${PORT}`);
 });

@@ -27,5 +27,7 @@ dist-ssr
 
 /src/generated/prisma
 
+.env.development
+.env.production
 .env
 *.db

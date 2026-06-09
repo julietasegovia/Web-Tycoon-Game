@@ -26,6 +26,8 @@ We used TailwindCSS to style every part of this project.
 
 ![Login Page](/doc_imgs/login.png)
 
+### Auto-saving
+The user will be given an Id that will match their saved data's Id to ensure that each time they log in they get server their own personal progress. Everytime the player changes something about their farm (a planted crop, a harvested mature crop, the purchase of a booster, etc) we've set a timeout of 5 seconds to save the player's progress.
 
 ## The Farm Layout
 
