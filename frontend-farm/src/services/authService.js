@@ -12,8 +12,8 @@ const getApiBaseUrl = () => {
   }
   
   // For production - change this to your actual backend IP and port
-  // Since your frontend is at 200.3.127.46:4000, backend should be at 200.3.127.46:3005
-  return 'http://200.3.127.46:3005';
+  // Since your frontend is at 200.3.127.46:3005, backend should be at 200.3.127.46:3005
+  return 'http://localhost:3005';
 };
 
 export const API_BASE = getApiBaseUrl();
