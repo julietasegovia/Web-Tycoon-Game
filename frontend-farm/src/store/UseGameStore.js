@@ -111,7 +111,7 @@ function calcEstado(parcela, ahora) {
 }
 
 export const useGameStore = create((set, get) => ({
-    oro: 50,
+    oro: 60,
     inventario: {},
     cultivoSeleccionado: "trigo",
 
@@ -321,7 +321,7 @@ loadGameState: (savedState) => {
   if (!savedState) return;
   
   set({
-    oro: savedState.oro ?? 50,
+    oro: savedState.oro ?? 60,
     inventario: savedState.inventario ?? {},
     cultivoSeleccionado: savedState.cultivoSeleccionado ?? "trigo",
     parcelas: savedState.parcelas ?? Array.from({ length: 12 }, (_, i) => crearParcela(i)),
