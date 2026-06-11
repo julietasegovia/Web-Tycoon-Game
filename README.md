@@ -92,11 +92,21 @@ There are 4 boosters, that can be either instant of appliable to the next harves
 ### Money
 Money is displayed both in the HUD and in the Shop
 
-Base money is $60, which will allow you to buy 6 seeds of wheat, 4 seeds of carrot and 3 of tomato. (we used to have 50 as our base but 60 is literally the perfect number to start since it is dividable by the prices of all three crops) 
+Base money is $60, which will allow you to buy 6 seeds of wheat, 4 seeds of carrot or 3 of tomato. (we used to have 50 as our base but 60 is literally the perfect number to start since it is dividable by the prices of all three crops) 
 
+Be careful when buying boosters, don't run out of money to buy crops afterwards (it literally happened to us in testing)
+
+Money is earned by harvessting and harvesting only, boosters will help you make money faster too.
 
 ## Other important info
 ### Auto-saving
 The user will be given an Id that will match their saved data's Id to ensure that each time they log in they get server their own personal progress. Everytime the player changes something about their farm (a planted crop, a harvested mature crop, the purchase of a booster, etc) we've set a timeout of 5 seconds to save the player's progress.So... don't worry if you close the site or if your PC shuts down, you'll still have everything exactly as you left it ;)
 
 ### AI Use
+> Juli:
+<br>
+asked Deepseek for help with debuging the autosaving system. 
+
+> Ana:
+<br>
+asked Claude for help with migrating the database since it kinf of got broken a few times (that gave us quite some trouble)
