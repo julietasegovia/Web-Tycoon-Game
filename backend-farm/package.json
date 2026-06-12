@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx prisma generate && esbuild server.js --bundle --platform=node --target=node20 --outdir=dist",
-    "start": "npx prisma db push && node server.js",
+    "start": "node dist/server.js",
     "dev": "nodemon server.js"
   },
   "keywords": [],

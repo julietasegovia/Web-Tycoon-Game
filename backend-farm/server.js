@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const express = require('express');
-const path    = require('path');
+
 const cors    = require('cors');
 const bcrypt  = require('bcrypt');
 const jwt     = require('jsonwebtoken');
@@ -163,6 +163,10 @@ app.use((_req, res) => {
 
 // ── Start ────────────────────────────────────────────────────────────────────
 
+
+// ── Start ────────────────────────────────────────────────────────────────────
+
+// Change this line at the bottom of server.js:>>>>>>> 1ce596e15df1a418ce8dc22c2d3b84e6f0cfda9a
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`✅ Farm server running on http://0.0.0.0:${PORT}`);
 });
