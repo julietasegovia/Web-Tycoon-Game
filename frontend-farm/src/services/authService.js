@@ -4,7 +4,6 @@
 
 // ── Configuration ─────────────────────────────────────────────────────────────
 
-<<<<<<< HEAD
 // Get the backend URL
 const getApiBaseUrl = () => {
   // Env var takes priority
@@ -14,18 +13,6 @@ const getApiBaseUrl = () => {
   // In dev, Vite proxy handles forwarding to port 3005
   // In production, use relative URLs (same origin as frontend)
   return '';
-=======
-// Get the backend URL - point to your actual backend server
-const getApiBaseUrl = () => {
-  // If you have an environment variable, use it
-  if (import.meta.env.VITE_API_URL) {
-    return import.meta.env.VITE_API_URL;
-  }
-  
-  // For production - change this to your actual backend IP and port
-  // Since your frontend is at 200.3.127.46:3005, backend should be at 200.3.127.46:3005
-  return 'http://localhost:3005';
->>>>>>> 1ce596e15df1a418ce8dc22c2d3b84e6f0cfda9a
 };
 
 export const API_BASE = getApiBaseUrl();

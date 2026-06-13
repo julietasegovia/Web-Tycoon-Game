@@ -330,6 +330,24 @@ loadGameState: (savedState) => {
     hora: savedState.hora ?? 6,
   });
 },
+
+restartGame: () => {
+        set((state) => ({
+            oro: 60,
+            parcelas: state.parcelas.map((parcela) => ({
+                ...parcela,
+                estado: "vacia",
+                cultivo: null,
+                progreso: 0,
+                tiempoPlantado: null,
+            })),
+            boostersActivos: {},
+            tiendaAbierta: false,
+            boosterSeleccionado: null,
+            dia: 1,
+            hora: 6,
+        }));
+    },
 }))
 
 export { CULTIVOS, BOOSTERS };

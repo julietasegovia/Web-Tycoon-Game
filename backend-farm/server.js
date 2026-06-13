@@ -13,6 +13,8 @@ const prisma = new PrismaClient();
 const JWT_SECRET = process.env.JWT_SECRET || 'change-this-secret-in-production';
 const PORT       = process.env.PORT || 3005;
 
+const path = require('path');
+
 app.use(express.json());
 app.use(cors({
   origin: true,

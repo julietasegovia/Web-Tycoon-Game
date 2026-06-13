@@ -8,7 +8,7 @@
  */
 
 import { useGameStore } from "../store/UseGameStore";
-
+import RestartButton from "./RestartButton";
 // ─────────────────────────────────────────────────────────────────────────────
 
 /**
@@ -120,7 +120,7 @@ export default function HUD() {
         onClick={abrirTienda}
         title="Abrir tienda"
         style={{
-          background: "rgb(95, 76, 23)",
+          background: "rgb(71, 58, 21)",
           borderRadius: 8,
           padding: "6px 14px",
           color: "#ffe291",
@@ -134,6 +134,8 @@ export default function HUD() {
       >
         Shop
       </button>
+
+      <RestartButton />
 
     </div>
   );
