@@ -4,19 +4,13 @@
  * y el acceso a la tienda de boosters.
  *
  * @author Farm Tycoon
- * @version 1.0.0
+ * @version 1.1.0
  */
 
 import { useGameStore } from "../store/UseGameStore";
-import RestartButton from "./RestartButton";
+
 // ─────────────────────────────────────────────────────────────────────────────
 
-/**
- * Metadatos de cada cultivo disponible en el juego.
- * Se usa para renderizar los botones del selector de cultivo.
- *
- * @type {Object.<string, { emoji: string, nombre: string, precio: number, tiempo: number }>}
- */
 const INFO_CULTIVOS = {
   trigo:     { emoji: "🌾", nombre: "Trigo",     precio: 10, tiempo: 60  },
   zanahoria: { emoji: "🥕", nombre: "Zanahoria", precio: 15, tiempo: 120 },
@@ -25,66 +19,44 @@ const INFO_CULTIVOS = {
 
 // ─────────────────────────────────────────────────────────────────────────────
 
-/**
- * HUD fijo en la parte inferior de la pantalla.
- *
- * Permite al jugador:
- * - Ver su saldo de oro actual.
- * - Seleccionar el cultivo que se sembrará al clickear una parcela vacía.
- * - Abrir la tienda de boosters.
- *
- * Lee y escribe en `useGameStore`. No recibe props.
- *
- * @component
- * @returns {JSX.Element}
- *
- * @example
- * // Se coloca al final de Farm.jsx para que quede por encima de todo
- * <HUD />
- */
 export default function HUD() {
-  const oro                = useGameStore((s) => s.oro);
+  const oro                 = useGameStore((s) => s.oro);
   const cultivoSeleccionado = useGameStore((s) => s.cultivoSeleccionado);
   const seleccionarCultivo  = useGameStore((s) => s.seleccionarCultivo);
   const abrirTienda         = useGameStore((s) => s.abrirTienda);
-  const streakDias           = useGameStore((s) => s.streakDias);
-  const multiplicadorStreak  = useGameStore((s) => s.multiplicadorStreak);
 
   return (
-    <div
-      style={{
-        position: "fixed",
-        bottom: 20,
-        left: "50%",
-        transform: "translateX(-50%)",
-        zIndex: 5,
+    <div style={{
+      position: "fixed",
+      bottom: 20,
+      left: "50%",
+      transform: "translateX(-50%)",
+      zIndex: 5,
+      display: "flex",
+      alignItems: "center",
+      gap: 15,
+      background: "rgb(53, 37, 23)",
+      border: "2px solid #5a440c",
+      borderRadius: 15,
+      padding: "10px 18px",
+      fontFamily: "monospace",
+      maxWidth: "80%",
+    }}>
+
+      {/* Saldo de oro */}
+      <div style={{
         display: "flex",
         alignItems: "center",
-        gap: 15,
-        background: "rgb(53, 37, 23)",
-        border: "2px solid #5a440c",
-        borderRadius: 15,
-        padding: "10px 18px",
-        fontFamily: "monospace",
-        maxWidth: "80%",
-      }}
-    >
-      {/* Saldo de oro del jugador */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          color: "#f5c542",
-          fontSize: 18,
-          fontWeight: "bold",
-          minWidth: 65,
-          marginLeft: 3,
-        }}
-      >
+        color: "#f5c542",
+        fontSize: 18,
+        fontWeight: "bold",
+        minWidth: 65,
+        marginLeft: 3,
+      }}>
         🪙 {oro}
       </div>
 
-      {/* Selector de cultivo: un botón por cada tipo disponible */}
+      {/* Selector de cultivo */}
       {Object.entries(INFO_CULTIVOS).map(([clave, info]) => {
         const seleccionado = cultivoSeleccionado === clave;
         return (
@@ -107,7 +79,6 @@ export default function HUD() {
             }}
           >
             <span>{info.emoji}</span>
-            {/* Tiempo de crecimiento y precio de venta */}
             <span style={{ fontSize: 10, display: "flex" }}>
               ◴{info.tiempo}s ${info.precio}
             </span>
@@ -115,7 +86,7 @@ export default function HUD() {
         );
       })}
 
-      {/* Botón para abrir la tienda de boosters */}
+      {/* Botón tienda */}
       <button
         onClick={abrirTienda}
         title="Abrir tienda"
@@ -128,14 +99,13 @@ export default function HUD() {
           cursor: "pointer",
           marginLeft: 15,
           marginRight: 5,
+          border: "none",
         }}
-        onMouseEnter={(e) => e.target.style.background = "rgba(120, 97, 34, 0.7)"}
-        onMouseLeave={(e) => e.target.style.background = "rgb(71, 58, 21)"}
+        onMouseEnter={(e) => e.currentTarget.style.background = "rgba(120, 97, 34, 0.7)"}
+        onMouseLeave={(e) => e.currentTarget.style.background = "rgb(71, 58, 21)"}
       >
         Shop
       </button>
-
-      <RestartButton />
 
     </div>
   );
