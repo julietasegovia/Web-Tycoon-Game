@@ -137,7 +137,7 @@ function generarMisiones() {
 // ─── Racha ───────────────────────────────────────────────────────────────────
 
 /** Ventana de tiempo (ms) para mantener la racha activa entre cosechas */
-const VENTANA_RACHA_MS = 5000;
+const VENTANA_RACHA_MS = 10000;
 
 /**
  * Devuelve el multiplicador de ganancia según la racha actual.

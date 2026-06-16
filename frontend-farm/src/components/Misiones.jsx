@@ -30,8 +30,8 @@ function TarjetaMision({ mision, onReclamar }) {
     const porcentaje = Math.min((mision.progreso / mision.objetivo) * 100, 100);
 
     const colorBarra =
-        mision.completada  ? "#3eb160" :
-        porcentaje > 50    ? "#f5c542" :
+        mision.completada  ? "#2d8046" :
+        porcentaje > 50    ? "#614e1a" :
                              "#a07830";
 
     return (
@@ -41,7 +41,7 @@ function TarjetaMision({ mision, onReclamar }) {
                 : "rgba(0,0,0,0.18)",
             border: `1.5px solid ${
                 mision.reclamada   ? "#3a3010" :
-                mision.completada  ? "#3eb160" :
+                mision.completada  ? "#2e8548" :
                                      "#604601"
             }`,
             borderRadius: 12,
@@ -54,11 +54,11 @@ function TarjetaMision({ mision, onReclamar }) {
         }}>
             {/* Fila superior: descripción + badge reclamada */}
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 8 }}>
-                <span style={{ color: "#f5c542", fontSize: 14, fontWeight: "bold", lineHeight: 1.3 }}>
+                <span style={{ color: "#cba029", fontSize: 15, fontWeight: "bold", lineHeight: 1.3 }}>
                     {describeMision(mision)}
                 </span>
                 {mision.reclamada && (
-                    <span style={{ fontSize: 11, color: "#3eb160", whiteSpace: "nowrap", marginTop: 2 }}>
+                    <span style={{ fontSize: 11, color: "#32944f", whiteSpace: "nowrap", marginTop: 2 }}>
                         ✓ Reclamada
                     </span>
                 )}
@@ -93,7 +93,7 @@ function TarjetaMision({ mision, onReclamar }) {
             {/* Recompensa + botón reclamar */}
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                 <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
-                    <span style={{ fontSize: 12, color: "#e5b634" }}>
+                    <span style={{ fontSize: 12, color: "#cfa42e" }}>
                         🪙 +{mision.recompensaOro}
                     </span>
                     <span style={{ fontSize: 12, color: "#c9a240" }}>
@@ -105,10 +105,10 @@ function TarjetaMision({ mision, onReclamar }) {
                     <button
                         onClick={() => onReclamar(mision.id)}
                         style={{
-                            background: "#3eb160",
+                            background: "#30894b",
                             border: "none",
                             borderRadius: 8,
-                            color: "#fff",
+                            color: "#ffd9ad",
                             fontSize: 12,
                             fontWeight: "bold",
                             padding: "5px 14px",
@@ -119,7 +119,7 @@ function TarjetaMision({ mision, onReclamar }) {
                         onMouseEnter={(e) => e.currentTarget.style.opacity = "0.82"}
                         onMouseLeave={(e) => e.currentTarget.style.opacity = "1"}
                     >
-                        ¡Reclamar!
+                        Reclamar ✔
                     </button>
                 )}
             </div>
@@ -134,9 +134,9 @@ function PanelRacha({ racha }) {
     const siguiente = racha < 3 ? 3 : racha < 6 ? 6 : racha < 10 ? 10 : null;
 
     const colorRacha =
-        racha >= 10 ? "#e74c3c" :
-        racha >= 6  ? "#e67e22" :
-        racha >= 3  ? "#f5c542" :
+        racha >= 10 ? "#c23f30" :
+        racha >= 6  ? "#de7d28" :
+        racha >= 3  ? "#d5ab37" :
                       "#a07830";
 
     return (
@@ -150,13 +150,13 @@ function PanelRacha({ racha }) {
             justifyContent: "space-between",
         }}>
             <div>
-                <div style={{ color: "#f5c542", fontSize: 13, fontWeight: "bold", marginBottom: 2 }}>
-                    ⚡ Racha de cosecha
+                <div style={{ color: "#d5ab39", fontSize: 13, fontWeight: "bold", marginBottom: 2 }}>
+                    ᯓ★ Racha de cosecha
                 </div>
                 <div style={{ color: "#a07830", fontSize: 11 }}>
                     {siguiente
                         ? `Llegá a ${siguiente} cosechas seguidas para subir`
-                        : "¡Racha máxima alcanzada!"}
+                        : "Racha máxima alcanzada!"}
                 </div>
             </div>
             <div style={{ textAlign: "right" }}>

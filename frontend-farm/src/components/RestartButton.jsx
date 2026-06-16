@@ -49,7 +49,7 @@ export default function RestartButton() {
           background: "rgb(71, 58, 21)",
           borderRadius: 8,
           padding: "6px 14px",
-          color: "#ffe291",
+          color: "#deac21",
           fontSize: 15,
           cursor: "pointer",
           marginLeft: 15,
@@ -111,11 +111,12 @@ export default function RestartButton() {
                     cursor: "pointer",
                     marginLeft: 15,
                     marginRight: 5,
+                    padding: "0px 10px",
                     }}
                 onMouseEnter={(e) => e.target.style.background = "rgb(160, 80, 30)"}
                 onMouseLeave={(e) => e.target.style.background = "rgb(139, 69, 19)"}
               >
-                Sí, reiniciar
+                Reiniciar
               </button>
               <button
                 onClick={handleCancel}

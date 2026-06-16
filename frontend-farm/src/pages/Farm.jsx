@@ -17,6 +17,7 @@ import HUD from "../components/HUD";
 import Shop from "../components/Shop";
 import Misiones from "../components/Misiones";
 import { NotificacionMision, NotificacionRacha } from "../components/Notificaciones";
+import HUDSecundario from "../components/HUDSec";
 
 // ─── Rutas a los spritesheets ─────────────────────────────────────────────────
 const FARM  = "src/assets/farm.png";
@@ -195,7 +196,10 @@ export default function Farm() {
 
       <Shop/>
 
+      {/*HUD con misiones y racha */}
+      <HUDSecundario/>
       <Misiones />
+
       <NotificacionMision />
       <NotificacionRacha />
 

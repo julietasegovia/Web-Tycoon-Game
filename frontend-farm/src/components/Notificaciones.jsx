@@ -121,7 +121,7 @@ export function NotificacionRacha() {
 
     const mult = multiplicadorRacha(hitoMostrado);
     const color =
-        hitoMostrado >= 10 ? "#e74c3c" :
+        hitoMostrado >= 10 ? "#d34535" :
         hitoMostrado >= 6  ? "#e67e22" :
                              "#f5c542";
 
@@ -147,10 +147,10 @@ export function NotificacionRacha() {
                 pointerEvents: "none",
             }}>
                 <div style={{ color, fontWeight: "bold", fontSize: 13 }}>
-                    ⚡ ¡Racha de {hitoMostrado}! × {mult} oro
+                    ⚡︎ Racha de {hitoMostrado}! × {mult} oro
                 </div>
                 <div style={{ color: "#a07830", fontSize: 11, marginTop: 2 }}>
-                    Cosechá rápido para mantenerla
+                    Cosechá rápido para mantenerla ;)
                 </div>
             </div>
         </>

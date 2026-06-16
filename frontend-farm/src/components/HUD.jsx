@@ -94,7 +94,7 @@ export default function HUD() {
           background: "rgb(71, 58, 21)",
           borderRadius: 8,
           padding: "6px 14px",
-          color: "#ffe291",
+          color: "#deac21",
           fontSize: 15,
           cursor: "pointer",
           marginLeft: 15,
