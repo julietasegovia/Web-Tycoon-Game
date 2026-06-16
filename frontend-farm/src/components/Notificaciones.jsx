@@ -13,7 +13,7 @@
 import { useEffect, useState } from "react";
 import { useGameStore, multiplicadorRacha } from "../store/UseGameStore";
 
-// ─── CSS de animación (se inyecta una sola vez) ───────────────────────────────
+// ─── CSS de animación (una sola vez) ───────────────────────────────
 
 const ANIM_CSS = `
 @keyframes slideDown {
