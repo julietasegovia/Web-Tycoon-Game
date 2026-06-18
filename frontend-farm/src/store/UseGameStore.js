@@ -94,13 +94,13 @@ const PLANTILLAS_MISIONES = [
     // Cosechar cultivo específico
     { tipo: "cosechar_cultivo", cultivo: "trigo",     objetivo: 5,  recompensaOro: 80,   recompensaBooster: "X5oro"      },
     { tipo: "cosechar_cultivo", cultivo: "zanahoria", objetivo: 4,  recompensaOro: 120,  recompensaBooster: "X2All"      },
-    { tipo: "cosechar_cultivo", cultivo: "tomate",    objetivo: 3,  recompensaOro: 200,  recompensaBooster: "sembradoAut"},
+    { tipo: "cosechar_cultivo", cultivo: "tomate",    objetivo: 3,  recompensaOro: 200,  recompensaBooster: "X5oro"},
     { tipo: "cosechar_cultivo", cultivo: "trigo",     objetivo: 8,  recompensaOro: 150,  recompensaBooster: "X2All"      },
     { tipo: "cosechar_cultivo", cultivo: "zanahoria", objetivo: 6,  recompensaOro: 180,  recompensaBooster: "X5oro"      },
     { tipo: "cosechar_cultivo", cultivo: "tomate",    objetivo: 5,  recompensaOro: 300,  recompensaBooster: "X10All"     },
     // Usar booster
     { tipo: "usar_booster", booster: "X5oro",      objetivo: 1, recompensaOro: 150,  recompensaBooster: "X2All"      },
-    { tipo: "usar_booster", booster: "X2All",      objetivo: 1, recompensaOro: 200,  recompensaBooster: "sembradoAut"},
+    { tipo: "usar_booster", booster: "X2All",      objetivo: 1, recompensaOro: 200,  recompensaBooster: "X5oro"},
     { tipo: "usar_booster", booster: "sembradoAut",objetivo: 1, recompensaOro: 100,  recompensaBooster: "X5oro"      },
     { tipo: "usar_booster", booster: "X10All",     objetivo: 1, recompensaOro: 500,  recompensaBooster: "X2All"      },
 ];

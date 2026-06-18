@@ -29,8 +29,8 @@ export default function HUDSecundario() {
     return (
     <div style={{
       position: "fixed",
-      bottom: 20,
-      right: 24,
+      top: 20,
+      right: 50,
       zIndex: 5,
       display: "flex",
       flexDirection: "column",
@@ -38,31 +38,6 @@ export default function HUDSecundario() {
       gap: 8,
       fontFamily: "monospace",
     }}>
- 
-      {/* Cartelito de racha — solo visible si racha >= 1 */}
-      {racha >= 1 && (
-        <div style={{
-          background: "rgb(53, 37, 23)",
-          border: `2px solid ${colorRacha}`,
-          borderRadius: 12,
-          padding: "6px 14px",
-          display: "flex",
-          alignItems: "center",
-          gap: 8,
-        }}>
-          <span style={{ color: colorRacha, fontSize: 18, lineHeight: 1 }}>
-            {racha}🔥
-          </span>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <span style={{ color: colorRacha, fontWeight: "bold", fontSize: 13 }}>
-              ×{mult} oro
-            </span>
-            <span style={{ color: "#6c5210", fontSize: 10 }}>
-              racha
-            </span>
-          </div>
-        </div>
-      )}
  
       {/* Fila: botón misiones + restart */}
       <div style={{
@@ -92,7 +67,7 @@ export default function HUDSecundario() {
             onMouseEnter={(e) => e.currentTarget.style.background = "rgba(120, 97, 34, 0.7)"}
             onMouseLeave={(e) => e.currentTarget.style.background = "rgb(71, 58, 21)"}
           >
-            📋 Tasks
+            🗒 Tasks
           </button>
  
           {pendientes > 0 && (
@@ -118,8 +93,36 @@ export default function HUDSecundario() {
         </div>
  
         <RestartButton />
+        
       </div>
- 
+
+      
+      {/* Cartelito de racha — solo visible si racha >= 1 */}
+      {racha >= 1 && (
+        <div style={{
+          background: "rgb(53, 37, 23)",
+          border: `2px solid ${colorRacha}`,
+          borderRadius: 12,
+          padding: "6px 14px",
+          display: "flex",
+          alignItems: "center",
+          gap: 5,
+          marginRight: "2px"
+        }}>
+          <span style={{ color: colorRacha, fontSize: 18, lineHeight: 1 }}>
+            {racha}🔥
+          </span>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <span style={{ color: colorRacha, fontWeight: "bold", fontSize: 13, lineHeight: 1.2 }}>
+              ×{mult} oro
+            </span>
+            <span style={{ color: "#6c5210", fontSize: 10, lineHeight: 1.2 }}>
+              racha
+            </span>
+          </div>
+        </div>
+      )}
+      
     </div>
   );
 }

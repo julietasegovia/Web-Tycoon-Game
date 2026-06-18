@@ -84,7 +84,7 @@ export function NotificacionMision() {
                 }}
             >
                 <div style={{ color: "#3eb160", fontWeight: "bold", fontSize: 13 }}>
-                    ✅ ¡Misión completada!
+                    ☑ ¡Misión completada!
                 </div>
                 <div style={{ color: "#a07830", fontSize: 11, marginTop: 2 }}>
                     Tocá para reclamar tu recompensa →

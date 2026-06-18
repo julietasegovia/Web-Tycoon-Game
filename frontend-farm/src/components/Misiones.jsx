@@ -151,7 +151,7 @@ function PanelRacha({ racha }) {
         }}>
             <div>
                 <div style={{ color: "#d5ab39", fontSize: 13, fontWeight: "bold", marginBottom: 2 }}>
-                    ᯓ★ Racha de cosecha
+                    ★ Racha de cosecha
                 </div>
                 <div style={{ color: "#a07830", fontSize: 11 }}>
                     {siguiente
@@ -223,7 +223,7 @@ export default function Misiones() {
                 {/* Header */}
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <p style={{ color: "#d8ad36", fontSize: 20, fontWeight: "bold", margin: 0 }}>
-                        📋 Misiones
+                        ᯓ Misiones
                     </p>
                     <button
                         onClick={cerrarMisiones}
@@ -278,7 +278,7 @@ export default function Misiones() {
                         onMouseEnter={(e) => e.currentTarget.style.background = "rgba(120,97,34,0.25)"}
                         onMouseLeave={(e) => e.currentTarget.style.background = "transparent"}
                     >
-                        🔄 Nuevas misiones
+                        ↻ Nuevas misiones
                     </button>
                 )}
             </div>
