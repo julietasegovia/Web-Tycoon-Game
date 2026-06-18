@@ -150,8 +150,6 @@ export function multiplicadorRacha(racha) {
     return 1
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-
 function crearParcela(id) {
     return {
         id,
@@ -171,9 +169,9 @@ function calcEstado(parcela, ahora) {
 
     let estado 
     if (progreso < 25) estado = "sembrada"
-    else if (progreso < 55)  estado = "brotando"
-    else if (progreso < 90)  estado = "creciendo"
-    else                     estado = "listo"
+    else if (progreso < 55) estado = "brotando"
+    else if (progreso < 90) estado = "creciendo"
+    else estado = "listo"
 
     return {estado, progreso}
 }
