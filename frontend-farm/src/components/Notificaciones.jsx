@@ -71,8 +71,8 @@ export function NotificacionMision() {
                     transform: "translateX(-50%)",
                     zIndex: 50,
                     background: "rgb(53, 37, 23)",
-                    border: "2px solid #3eb160",
-                    borderRadius: 12,
+                    border: "2px solid #2c7f45",
+                    borderRadius: 10,
                     padding: "10px 20px",
                     fontFamily: "monospace",
                     cursor: "pointer",
@@ -83,10 +83,10 @@ export function NotificacionMision() {
                     boxShadow: "0 4px 20px rgba(0,0,0,0.5)",
                 }}
             >
-                <div style={{ color: "#3eb160", fontWeight: "bold", fontSize: 13 }}>
+                <div style={{ color: "#32924f", fontWeight: "bold", fontSize: 13 }}>
                     ☑ ¡Misión completada!
                 </div>
-                <div style={{ color: "#a07830", fontSize: 11, marginTop: 2 }}>
+                <div style={{ color: "#8c6a2a", fontSize: 11, marginTop: 2 }}>
                     Tocá para reclamar tu recompensa →
                 </div>
             </div>
@@ -121,9 +121,9 @@ export function NotificacionRacha() {
 
     const mult = multiplicadorRacha(hitoMostrado);
     const color =
-        hitoMostrado >= 10 ? "#d34535" :
-        hitoMostrado >= 6  ? "#e67e22" :
-                             "#f5c542";
+        hitoMostrado >= 10 ? "#d25b4e" :
+        hitoMostrado >= 6  ? "#e68939" :
+                             "#e8bb40";
 
     return (
         <>
@@ -134,9 +134,10 @@ export function NotificacionRacha() {
                 left: "50%",
                 transform: "translateX(-50%)",
                 zIndex: 49,
-                background: "rgb(53, 37, 23)",
+                background: "rgba(66, 41, 19, 0.84)",
+                backdropFilter: "blur(10px)",
                 border: `2px solid ${color}`,
-                borderRadius: 12,
+                borderRadius: 10,
                 padding: "10px 20px",
                 fontFamily: "monospace",
                 whiteSpace: "nowrap",

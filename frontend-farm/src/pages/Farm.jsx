@@ -16,6 +16,7 @@ import GrillaParcelas from "../components/GrillaParcelas";
 import HUD from "../components/HUD";
 import Shop from "../components/Shop";
 import Misiones from "../components/Misiones";
+import UserProfile from "../components/UserProfile";
 import { NotificacionMision, NotificacionRacha } from "../components/Notificaciones";
 import HUDSecundario from "../components/HUDSec";
 
@@ -202,6 +203,8 @@ export default function Farm() {
 
       <NotificacionMision />
       <NotificacionRacha />
+
+      <UserProfile />
 
       {/* granero? */}
       <At x="80vw" y="30vh" z={2} {...D}>

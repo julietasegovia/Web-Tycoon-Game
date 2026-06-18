@@ -21,7 +21,7 @@ export default function HUDSecundario() {
     const pendientes = misiones.filter((m) => m.completada && !m.reclamada).length
 
     const colorRacha = 
-        racha >= 10 ? "#c24133" :
+        racha >= 10 ? "#c24d3f" :
         racha >= 6  ? "#c36a1d" :
         racha >= 3  ? "#daae36" :
                       "#a07830";
@@ -44,9 +44,10 @@ export default function HUDSecundario() {
         display: "flex",
         gap: 8,
         alignItems: "center",
-        background: "rgb(53, 37, 23)",
+        background: "rgba(66, 41, 19, 0.79)",
+        backdropFilter: "blur(10px)",
         border: "2px solid #5a440c",
-        borderRadius: 12,
+        borderRadius: 10,
         padding: "8px 12px",
       }}>
  
@@ -100,23 +101,24 @@ export default function HUDSecundario() {
       {/* Cartelito de racha — solo visible si racha >= 1 */}
       {racha >= 1 && (
         <div style={{
-          background: "rgb(53, 37, 23)",
+          background: "rgba(66, 41, 19, 0.86)",
+          backdropFilter: "blur(10px)",
           border: `2px solid ${colorRacha}`,
-          borderRadius: 12,
+          borderRadius: 10,
           padding: "6px 14px",
           display: "flex",
           alignItems: "center",
           gap: 5,
-          marginRight: "2px"
+          marginRight: "15px"
         }}>
-          <span style={{ color: colorRacha, fontSize: 18, lineHeight: 1 }}>
+          <span style={{ color: colorRacha, fontSize: 17, lineHeight: 1 }}>
             {racha}🔥
           </span>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <span style={{ color: colorRacha, fontWeight: "bold", fontSize: 13, lineHeight: 1.2 }}>
               ×{mult} oro
             </span>
-            <span style={{ color: "#6c5210", fontSize: 10, lineHeight: 1.2 }}>
+            <span style={{ color: "#8e7432", fontSize: 10, lineHeight: 1.2 }}>
               racha
             </span>
           </div>
