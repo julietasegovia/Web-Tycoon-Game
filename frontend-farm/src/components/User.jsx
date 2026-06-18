@@ -151,7 +151,7 @@ export default function UserProfile() {
                         margin: 0 
                     }}
                 >
-                    👤 Perfil
+                    𑣲Perfil
                 </p>
                 <button
                     onClick={cerrarPerfil}
@@ -207,7 +207,7 @@ export default function UserProfile() {
                                 color: "#deac21",
                             }}
                         >
-                            {!user?.profilePicture && "👤"}
+                            {!user?.profilePicture && "𖠋"}
                         </div>
 
                         <button

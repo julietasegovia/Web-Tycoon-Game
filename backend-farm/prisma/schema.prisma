@@ -20,6 +20,7 @@ model User {
   username  String   @unique
   email     String   @unique
   password  String   // bcrypt hash — never store plaintext
+  profilePicture String? // base64 data URL, resized client-side before upload
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   gameState GameState?

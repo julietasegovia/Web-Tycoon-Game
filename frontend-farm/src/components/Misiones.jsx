@@ -223,7 +223,7 @@ export default function Misiones() {
                 {/* Header */}
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <p style={{ color: "#d8ad36", fontSize: 20, fontWeight: "bold", margin: 0 }}>
-                        ᯓ Misiones
+                        ᯓ Misiones 𓀡
                     </p>
                     <button
                         onClick={cerrarMisiones}

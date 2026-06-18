@@ -66,32 +66,48 @@ export default function RestartButton() {
         <div
           style={{
             position: "fixed",
-            top: 350,
-            right: 720,
-            background: "rgba(0, 0, 0, 0.7)",
+            inset: 0,
+            background: "rgba(0, 0, 0, 0.55)",
             zIndex: 1000,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            backdropFilter: "blur(10px)",
+            backdropFilter: "blur(6px)",
+            WebkitBackdropFilter: "blur(6px)", 
           }}
           onClick={handleCancel}
         >
           <div
             style={{
-            position: "fixed",
               background: "rgb(53, 37, 23)",
               border: "2px solid #5a440c",
               borderRadius: 20,
               padding: "24px 28px",
               fontFamily: "monospace",
               textAlign: "center",
-              maxWidth: "300px",
+              maxWidth: "330px",
+              minHeight: "220px"
             }}
             onClick={(e) => e.stopPropagation()}
           >
-            <p style={{ color: "#a07830", marginBottom: 12, fontSize: 14 }}>
-              Se perderán todos los cultivos actuales y el oro volverá a 60.
+            <h1 
+              style={{ 
+                color: "#ad3320", 
+                marginBottom: 12, 
+                fontSize: 16 
+
+              }}
+            > Cuidado!</h1>
+            <p 
+              style={{ 
+                color: "#a07830", 
+                marginBottom: 12, 
+                fontSize: 14,
+                marginBottom: "20px"
+
+              }}
+            >
+              Si reinicias se perderán todos los cultivos actuales y el oro volverá a 60 (no hay vuelta atras!).
             </p>
             <div
               style={{

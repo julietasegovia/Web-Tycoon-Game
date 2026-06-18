@@ -1,4 +1,3 @@
-
 /**
  * @fileoverview HUD secundario de Farm Tycoon.
  * Agrupa el indicador de racha, el botón de misiones y el botón de reinicio.
@@ -9,24 +8,28 @@
  * @version 1.0.0
  */
 
-import { useGameStore, multiplicadorRacha } from "../store/UseGameStore";
+import { useContext } from "react"
+import { useGameStore, multiplicadorRacha } from "../store/UseGameStore"
+import { AuthContext } from "../context/AuthContext"
 import RestartButton from "./RestartButton"
 
 export default function HUDSecundario() {
-    const abrirMisiones = useGameStore((s) => s.abrirMisiones)
-    const misiones = useGameStore((s) => s.misiones)
-    const racha = useGameStore((s) => s.racha)
+  const abrirMisiones = useGameStore((s) => s.abrirMisiones)
+  const abrirPerfil = useGameStore((s) => s.abrirPerfil)
+  const misiones = useGameStore((s) => s.misiones)
+  const racha = useGameStore((s) => s.racha)
+  const { user } = useContext(AuthContext)
 
-    const mult = multiplicadorRacha(racha)
-    const pendientes = misiones.filter((m) => m.completada && !m.reclamada).length
+  const mult = multiplicadorRacha(racha)
+  const pendientes = misiones.filter((m) => m.completada && !m.reclamada).length
 
-    const colorRacha = 
-        racha >= 10 ? "#c24d3f" :
-        racha >= 6  ? "#c36a1d" :
-        racha >= 3  ? "#daae36" :
-                      "#a07830";
+  const colorRacha = 
+    racha >= 10 ? "#c24133" :
+    racha >= 6  ? "#c36a1d" :
+    racha >= 3  ? "#daae36" :
+                  "#a07830"
 
-    return (
+  return (
     <div style={{
       position: "fixed",
       top: 20,
@@ -44,13 +47,37 @@ export default function HUDSecundario() {
         display: "flex",
         gap: 8,
         alignItems: "center",
-        background: "rgba(66, 41, 19, 0.79)",
-        backdropFilter: "blur(10px)",
+        background: "rgb(53, 37, 23)",
         border: "2px solid #5a440c",
-        borderRadius: 10,
+        borderRadius: 12,
         padding: "8px 12px",
       }}>
  
+        {/* Botón perfil (avatar) */}
+        <button
+          onClick={abrirPerfil}
+          title="Mi perfil"
+          style={{
+            width: 34,
+            height: 34,
+            borderRadius: "50%",
+            border: "2px solid #5a440c",
+            background: user?.profilePicture
+              ? `url(${user.profilePicture}) center / cover no-repeat`
+              : "rgb(71, 58, 21)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            color: "#deac21",
+            fontSize: 16,
+            cursor: "pointer",
+            padding: 0,
+            flexShrink: 0,
+          }}
+        >
+          {!user?.profilePicture && "𑣲"}
+        </button>
+
         {/* Botón misiones con badge */}
         <div style={{ position: "relative", display: "inline-flex" }}>
           <button
@@ -101,24 +128,23 @@ export default function HUDSecundario() {
       {/* Cartelito de racha — solo visible si racha >= 1 */}
       {racha >= 1 && (
         <div style={{
-          background: "rgba(66, 41, 19, 0.86)",
-          backdropFilter: "blur(10px)",
+          background: "rgb(53, 37, 23)",
           border: `2px solid ${colorRacha}`,
-          borderRadius: 10,
+          borderRadius: 12,
           padding: "6px 14px",
           display: "flex",
           alignItems: "center",
           gap: 5,
-          marginRight: "15px"
+          marginRight: "2px"
         }}>
-          <span style={{ color: colorRacha, fontSize: 17, lineHeight: 1 }}>
+          <span style={{ color: colorRacha, fontSize: 18, lineHeight: 1 }}>
             {racha}🔥
           </span>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <span style={{ color: colorRacha, fontWeight: "bold", fontSize: 13, lineHeight: 1.2 }}>
               ×{mult} oro
             </span>
-            <span style={{ color: "#8e7432", fontSize: 10, lineHeight: 1.2 }}>
+            <span style={{ color: "#6c5210", fontSize: 10, lineHeight: 1.2 }}>
               racha
             </span>
           </div>
@@ -126,5 +152,5 @@ export default function HUDSecundario() {
       )}
       
     </div>
-  );
+  )
 }
