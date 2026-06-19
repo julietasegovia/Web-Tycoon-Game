@@ -97,30 +97,16 @@ function C(props) { return <Spr src={CROPS} nw={80}  nh={176} {...props} />; }
  */
 
 function BarraProgreso({ progreso }) {
-  const color =
-    progreso < 40 ? "#a3d977" :
-    progreso < 80 ? "#f5c542" :
-                    "#e67e22";
+  const colorClass =
+    progreso < 40 ? "bg-[#a3d977]" :
+    progreso < 80 ? "bg-[#f5c542]" :
+                     "bg-[#e67e22]";
 
   return (
-    <div
-      style={{
-        position: "absolute",
-        bottom: 5,
-        left: "10%",
-        width: "80%",
-        height: 5,
-        background: "rgba(0,0,0,0.4)",
-        borderRadius: 5,
-      }}
-    >
+    <div className="absolute bottom-[5px] left-[10%] w-[80%] h-[5px] bg-black/40 rounded-[5px]">
       <div
-        style={{
-          width: `${progreso}%`,
-          height: "100%",
-          background: color,
-          borderRadius: 5,
-        }}
+        className={`h-full rounded-[5px] ${colorClass}`}
+        style={{ width: `${progreso}%` }}
       />
     </div>
   );
@@ -173,14 +159,15 @@ function Parcela({ parcela }) {
     }
   }
 
-  const cursorStyle =
+  const cursorClass =
     parcela.estado === "vacia" || parcela.estado === "listo"
-      ? "pointer"
-      : "default";
+      ? "cursor-pointer"
+      : "cursor-default";
 
-  const borderColor =
-    parcela.estado === "listo" ? "#93711b" :
-    parcela.estado === "vacia" ? "#675119" : "#587c20";
+  const borderClass =
+    parcela.estado === "listo" ? "border-[#93711b]" :
+    parcela.estado === "vacia" ? "border-[#675119]" :
+                                  "border-[#587c20]";
 
   return (
     <div
@@ -190,28 +177,11 @@ function Parcela({ parcela }) {
         parcela.estado === "listo" ? "Cosechar" :
         `${parcela.cultivo} - ${Math.round(parcela.progreso)}%`
       }
-      style={{
-        position: "relative",
-        width: "100%",
-        height: "100%",
-        cursor: cursorStyle,
-        borderRadius: 10,
-        border: `2px solid ${borderColor}`,
-        background: "rgba(85, 67, 27, 0.81)",
-      }}
+      className={`relative w-full h-full rounded-[10px] border-2 bg-[rgba(85,67,27,0.81)] ${cursorClass} ${borderClass}`}
     >
       {/* Sprite del cultivo centrado en la parcela */}
       {spriteData && (
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            marginTop: 20,
-          }}
-        >
+        <div className="absolute inset-0 flex items-center justify-center mt-5">
           <C
             sx={spriteData.sx} sy={spriteData.sy}
             sw={spriteData.sw} sh={spriteData.sh}
@@ -222,13 +192,7 @@ function Parcela({ parcela }) {
 
       {/* Indicador de listo para cosechar */}
       {parcela.estado === "listo" && (
-        <div style={{
-          position: "absolute",
-          top: 5,
-          right: 5,
-          fontSize: 15,
-          animation: "pulse 1s infinite alternate",
-        }}>
+        <div className="absolute top-[5px] right-[5px] text-[15px] animate-[pulse_1s_infinite_alternate]">
           ✨
         </div>
       )}
@@ -285,30 +249,9 @@ export default function GrillaParcelas() {
       </style>
 
       {/* Panel centrado que contiene la grilla, aca se define la posicion: fixed para que no se mueva*/}
-      <div
-        style={{
-          position: "fixed",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          zIndex: 4,
-          width: "min(60%, 500px)",
-          padding: 10,
-          background: "rgb(108, 83, 25)",
-          borderRadius: 15,
-          boxSizing: "border-box",
-        }}
-      >
+      <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[4] w-[min(60%,500px)] p-[10px] bg-[rgb(108,83,25)] rounded-[15px] box-border">
         {/* Grilla 4×3 fluida */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
-            gridTemplateRows: "repeat(3, 1fr)",
-            gap: 10,
-            aspectRatio: "4 / 3", 
-          }}
-        >
+        <div className="grid grid-cols-4 grid-rows-3 gap-2.5 aspect-[4/3]">
           {parcelas.map((parcela) => (
             <Parcela key={parcela.id} parcela={parcela} />
           ))}

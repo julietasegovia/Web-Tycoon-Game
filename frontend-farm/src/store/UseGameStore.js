@@ -134,7 +134,7 @@ function generarMisiones() {
     }))
 }
 
-// ─── Racha ───────────────────────────────────────────────────────────────────
+// ─── Racha 
 
 /** Ventana de tiempo (ms) para mantener la racha activa entre cosechas */
 const VENTANA_RACHA_MS = 10000
@@ -176,7 +176,6 @@ function calcEstado(parcela, ahora) {
     return {estado, progreso}
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
 
 export const useGameStore = create((set, get) => ({
     oro: 60,
@@ -197,19 +196,19 @@ export const useGameStore = create((set, get) => ({
     hora: 6,
     timerActivo: false,
 
-    // ── Misiones ─────────────────────────────────────────────────────────────
+    // ── Misiones 
     misiones: generarMisiones(),
     misionesAbiertas: false,
     /** Notificación de misión completada: { id, nombre } | null */
     notificacionMision: null,
 
-    // ── Racha ─────────────────────────────────────────────────────────────────
+    // ── Racha 
     /** Cantidad de cosechas consecutivas dentro de la ventana de tiempo */
     racha: 0,
     /** Timestamp de la última cosecha (para calcular si expiró la racha) */
     ultimaCosecha: null,
 
-    // ── Acciones de misiones ──────────────────────────────────────────────────
+    // ── Acciones de misiones 
 
     abrirMisiones:  () => set({ misionesAbiertas: true  }),
     cerrarMisiones: () => set({ misionesAbiertas: false }),
@@ -285,12 +284,12 @@ export const useGameStore = create((set, get) => ({
         const ahora = Date.now()
         const cultivo = CULTIVOS[parcela.cultivo]
 
-        // ── Calcular racha ────────────────────────────────────────────────────
+        // ── Calcular racha 
         const rachaValida = ultimaCosecha && (ahora - ultimaCosecha) <= VENTANA_RACHA_MS
         const nuevaRacha  = rachaValida ? racha + 1 : 1
         const multRacha   = multiplicadorRacha(nuevaRacha)
 
-        // ── Calcular ganancia con boosters ────────────────────────────────────
+        // ── Calcular ganancia con boosters 
         const tieneX5    = (boostersActivos.X5oro  ?? 0) > 0
         const tieneX2All = (boostersActivos.X2All  ?? 0) > 0
         const tieneX10All= (boostersActivos.X10All ?? 0) > 0

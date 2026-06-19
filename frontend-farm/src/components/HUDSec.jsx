@@ -23,134 +23,76 @@ export default function HUDSecundario() {
   const mult = multiplicadorRacha(racha)
   const pendientes = misiones.filter((m) => m.completada && !m.reclamada).length
 
-  const colorRacha = 
-    racha >= 10 ? "#c24133" :
-    racha >= 6  ? "#c36a1d" :
-    racha >= 3  ? "#daae36" :
-                  "#a07830"
+  // Clases de color según el tramo de racha (border y texto comparten el mismo tono)
+  const colorBorderClass =
+    racha >= 10 ? "border-[#c24133]" :
+    racha >= 6  ? "border-[#c36a1d]" :
+    racha >= 3  ? "border-[#daae36]" :
+                  "border-[#a07830]"
+
+  const colorTextClass =
+    racha >= 10 ? "text-[#c24133]" :
+    racha >= 6  ? "text-[#c36a1d]" :
+    racha >= 3  ? "text-[#daae36]" :
+                  "text-[#a07830]"
 
   return (
-    <div style={{
-      position: "fixed",
-      top: 20,
-      right: 50,
-      zIndex: 5,
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "flex-end",
-      gap: 8,
-      fontFamily: "monospace",
-    }}>
- 
-      {/* Fila: botón misiones + restart */}
-      <div style={{
-        display: "flex",
-        gap: 8,
-        alignItems: "center",
-        background: "rgb(53, 37, 23)",
-        border: "2px solid #5a440c",
-        borderRadius: 12,
-        padding: "8px 12px",
-      }}>
- 
-        {/* Botón perfil (avatar) */}
-        <button
-          onClick={abrirPerfil}
-          title="Mi perfil"
-          style={{
-            width: 34,
-            height: 34,
-            borderRadius: "50%",
-            border: "2px solid #5a440c",
-            background: user?.profilePicture
-              ? `url(${user.profilePicture}) center / cover no-repeat`
-              : "rgb(71, 58, 21)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            color: "#deac21",
-            fontSize: 16,
-            cursor: "pointer",
-            padding: 0,
-            flexShrink: 0,
-          }}
-        >
-          {!user?.profilePicture && "𑣲"}
-        </button>
-
-        {/* Botón misiones con badge */}
-        <div style={{ position: "relative", display: "inline-flex" }}>
-          <button
-            onClick={abrirMisiones}
-            title="Ver misiones"
-            style={{
-              background: "rgb(71, 58, 21)",
-              border: "none",
-              borderRadius: 8,
-              padding: "6px 12px",
-              color: "#deac21",
-              fontSize: 15,
-              cursor: "pointer",
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.background = "rgba(120, 97, 34, 0.7)"}
-            onMouseLeave={(e) => e.currentTarget.style.background = "rgb(71, 58, 21)"}
-          >
-            🗒 Tasks
-          </button>
- 
-          {pendientes > 0 && (
-            <span style={{
-              position: "absolute",
-              top: -6,
-              right: -4,
-              background: "#1f6a36",
-              color: "#fff",
-              borderRadius: "50%",
-              width: 17,
-              height: 17,
-              fontSize: 10,
-              fontWeight: "bold",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              pointerEvents: "none",
-            }}>
-              {pendientes}
-            </span>
-          )}
-        </div>
- 
-        <RestartButton />
-        
-      </div>
-
-      
+    <div className="fixed top-[20px] right-[50px] z-[5] flex flex-row items-end gap-[370px] font-mono">
       {/* Cartelito de racha — solo visible si racha >= 1 */}
       {racha >= 1 && (
-        <div style={{
-          background: "rgb(53, 37, 23)",
-          border: `2px solid ${colorRacha}`,
-          borderRadius: 12,
-          padding: "6px 14px",
-          display: "flex",
-          alignItems: "center",
-          gap: 5,
-          marginRight: "2px"
-        }}>
-          <span style={{ color: colorRacha, fontSize: 18, lineHeight: 1 }}>
+        <div className={`bg-[rgb(53,37,23)] border-2 ${colorBorderClass} rounded-[12px] px-[14px] py-[6px] flex items-center gap-[5px] mr-[2px]`}>
+          <span className={`${colorTextClass} text-[18px] leading-none`}>
             {racha}🔥
           </span>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <span style={{ color: colorRacha, fontWeight: "bold", fontSize: 13, lineHeight: 1.2 }}>
+          <div className="flex flex-col">
+            <span className={`${colorTextClass} font-bold text-[13px] leading-[1.2]`}>
               ×{mult} oro
             </span>
-            <span style={{ color: "#6c5210", fontSize: 10, lineHeight: 1.2 }}>
+            <span className="text-[#6c5210] text-[10px] leading-[1.2]">
               racha
             </span>
           </div>
         </div>
       )}
       
+      {/* Fila: botón misiones + restart */}
+      <div className="flex gap-[10px] items-center bg-[rgb(53,37,23)] border-2 border-[#5a440c] rounded-[12px] px-[12px] py-[8px]">
+
+        {/* Botón perfil (avatar) */}
+        <button
+          onClick={abrirPerfil}
+          title="Mi perfil"
+          className="w-[34px] h-[34px] rounded-full border-2 border-[#5a440c] flex items-center justify-center text-[#deac21] text-[16px] cursor-pointer p-0 flex-shrink-0"
+          style={{
+            background: user?.profilePicture
+              ? `url(${user.profilePicture}) center / cover no-repeat`
+              : "rgb(71, 58, 21)",
+          }}
+        >
+          {!user?.profilePicture && "𑣲"}
+        </button>
+
+        {/* Botón misiones con badge */}
+        <div className="relative inline-flex">
+          <button
+            onClick={abrirMisiones}
+            title="Ver misiones"
+            className="bg-[rgb(71,58,21)] hover:bg-[rgba(120,97,34,0.7)] border-none rounded-[8px] px-[12px] py-[6px] text-[#deac21] text-[15px] cursor-pointer transition-colors"
+          >
+            🗒 Tasks
+          </button>
+
+          {pendientes > 0 && (
+            <span className="absolute top-[-6px] right-[-4px] bg-[#1f6a36] text-white rounded-full w-[17px] h-[17px] text-[10px] font-bold flex items-center justify-center pointer-events-none">
+              {pendientes}
+            </span>
+          )}
+        </div>
+
+        <RestartButton />
+
+      </div>
+
     </div>
   )
 }

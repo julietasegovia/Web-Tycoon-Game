@@ -127,7 +127,7 @@ function TarjetaMision({ mision, onReclamar }) {
     );
 }
 
-// ─── Subcomponente: indicador de racha ───────────────────────────────────────
+// ─── Subcomponente: indicador de racha 
 
 function PanelRacha({ racha }) {
     const mult = multiplicadorRacha(racha);
@@ -171,7 +171,7 @@ function PanelRacha({ racha }) {
     );
 }
 
-// ─── Componente principal ─────────────────────────────────────────────────────
+// ─── Componente principal 
 
 /**
  * Modal de misiones diarias.

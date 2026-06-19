@@ -17,7 +17,6 @@ import HUD from "../components/HUD";
 import Shop from "../components/Shop";
 import Misiones from "../components/Misiones";
 import UserProfile from "../components/User";
-import { NotificacionMision, NotificacionRacha } from "../components/Notificaciones";
 import HUDSecundario from "../components/HUDSec";
 
 // ─── Rutas a los spritesheets ─────────────────────────────────────────────────
@@ -200,9 +199,6 @@ export default function Farm() {
       {/*HUD con misiones y racha */}
       <HUDSecundario/>
       <Misiones />
-
-      <NotificacionMision />
-      <NotificacionRacha />
 
       <UserProfile />
 

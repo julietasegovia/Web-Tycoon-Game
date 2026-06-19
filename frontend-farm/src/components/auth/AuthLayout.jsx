@@ -91,7 +91,7 @@ export default function AuthLayout({ children }) {
           </h1>
 
           <p className="text-amber-200 text-base leading-relaxed max-w-xs font-light">
-            Start with a simple farm house. Scale into an full barn with chickens, cows, fishing and more!
+            Harvest your crops, earn money and complete the missions, unlimited growth, unlimited fun!
           </p>
         </div>
 
