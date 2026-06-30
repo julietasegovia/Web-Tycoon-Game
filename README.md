@@ -6,7 +6,7 @@ This is a simple but addictive farming game for a school project.
 ### project's architecture
 * React + Vite for the frontend.
 * Node.js + Express for the backend.
-* SQLite as our database, managed with Prisma ORM. 
+* PostgreSQL as our database, managed with Prisma ORM. 
 * TailwindCSS for style.
 
 ### sprites!
