@@ -45,7 +45,19 @@ The space is simple, consisting of a grid where the user is able to plant crops,
 
 The use and meaning of each part is pretty straightforward. Nevertheless, we'll add some clarifications here if there's any doubt.
 
-### HUD
+## Mini control panel
+At the top right or your screen you'll find a mini HUD consisting of three elements:
+
+#### Your player icon
+Click on this to check your accounts data (e-mail, username and profile pic) and your current ammount of gold. There's also a log-out button to get out of your account.
+
+#### Tasks
+Need some extra gold? You can check your progress on your current tasks. Task can ask you to harvest a certain ammount of crops, or to use a specific booster, get them done and gather your reward. Tasks refresh once you've finished all three.
+
+#### Restart Button
+Are you too rich? Maybe too poor? Either way, we aknowledge that the game gets boring when you have so much money that you don't have objectives, or to little that you can't re-plant. That's why our restart button is there.
+
+## HUD
 The HUD displays basically everything you need to play (except for the slots, obvi).
 
 It contains the current amount of money you have and lets you select what crops you want to plant, there's also a button to access the shop that i'll explain later on.
@@ -66,7 +78,9 @@ Here you'll be able to se your total money, a list of boosters to buy, the sell 
 
 Be careful when you buy boosters, remember that if you run out of money you won't be able to plant crops so, you'll not be able to actually use the boosters and you won't be able to do anything anymore except from starting over.
 
-**Soon, a restart button will be added!**
+### Streak
+Whenever you harvest, you activate a harvesting streak. Each time you harvest a crop within 10 seconds of the streak begining you'll get a little multiplier on the next harvest's gains. Keep your slots active and grow your streak for better gains.
+
 #### Boosters
 Yay! the fun part ;) 
 
@@ -89,8 +103,10 @@ There are 4 boosters, that can be either instant of appliable to the next harves
 | X2 | $1000 | when harvesting (x12) | When harvesting all crops, you'll get twice as much money for each slot (12 total) |
 | X10 | $5000 | when harvesting (x12) | When harvesting all crops, you'll get ten times the money for each slot (12 total)  |
 
+###
+
 ### Money
-Money is displayed both in the HUD and in the Shop
+Money is displayed in the HUD, in the Shop and in your player profile.
 
 Base money is $60, which will allow you to buy 6 seeds of wheat, 4 seeds of carrot or 3 of tomato. (we used to have 50 as our base but 60 is literally the perfect number to start since it is dividable by the prices of all three crops) 
 
