@@ -11,7 +11,8 @@ import { useEffect } from "react";
 import { useGameStore } from "../store/UseGameStore";
 
 const FARM  = "src/assets/farm.png";
-const CROPS = "src/assets/crops.png";
+import CROPS from "../assets/crops.png";
+
 
 /**
  * Mapa de sprites por cultivo y estado de crecimiento.
