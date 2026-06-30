@@ -27,8 +27,8 @@ services:
       DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
       NODE_ENV: production
       PORT: 3000
-    ports:
-      - "3000:3000"
+    expose:
+    - "3000"
 
   frontend:
     build:
@@ -37,8 +37,8 @@ services:
     restart: unless-stopped
     depends_on:
       - backend
-    ports:
-      - "80:80"
+    expose:
+    - "80"
 
 volumes:
   postgres_data:
