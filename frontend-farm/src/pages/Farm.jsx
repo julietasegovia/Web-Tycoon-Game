@@ -20,10 +20,10 @@ import UserProfile from "../components/User";
 import HUDSecundario from "../components/HUDSec";
 
 // ─── Rutas a los spritesheets ─────────────────────────────────────────────────
-import FARM from "./assets/farm.png";
-import CROPS from "./assets/crops.png";
-import BG from "./assets/fondo1.png";
-import ARB from "./assets/arbol1.png";
+import FARM from "../assets/farm.png";
+import CROPS from "../assets/crops.png";
+import BG from "../assets/fondo1.png";
+import ARB from "../assets/arbol1.png";
 
 /**
  * Wrapper para el spritesheet de árboles (arbol.png)
