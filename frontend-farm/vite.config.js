@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-  base: process.env.NODE_ENV === 'production' ? '/~cinco/' : '/',
+  base: process.env.VITE_BASE_PATH || '/',
   plugins: [react()],
   server: {
     port: 3000,
@@ -13,7 +13,7 @@ export default defineConfig({
       '/api': {
         target: 'http://localhost:3005',
         changeOrigin: true,
-        rewrite: (path) => path // Don't rewrite, keep /api prefix
+        rewrite: (path) => path 
       }
     }
   },
