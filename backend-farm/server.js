@@ -186,11 +186,6 @@ app.post('/api/auth/logout', requireAuth, (_req, res) => {
   res.json({ ok: true })
 })
 
-// ── SPA fallback (client-side routing) ──────────────────────────────────────
-app.use((_req, res) => {
-  res.sendFile(path.join(frontendDist, 'index.html'))
-})
-
 // ── Start ────────────────────────────────────────────────────────────────────
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`✅ Farm server running on http://0.0.0.0:${PORT}`)
