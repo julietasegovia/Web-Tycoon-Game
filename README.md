@@ -126,8 +126,6 @@ Money is displayed in the HUD, in the Shop and in your player profile.
 
 Base money is $60, which will allow you to buy 6 seeds of wheat, 4 seeds of carrot or 3 of tomato. (we used to have 50 as our base but 60 is literally the perfect number to start since it is dividable by the prices of all three crops) 
 
-Be careful when buying boosters, don't run out of money to buy crops afterwards (it literally happened to us in testing)
-
 Money is earned by harvessting and harvesting only, boosters will help you make money faster too.
 
 ## Other important info
